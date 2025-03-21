@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h3 class="text-center mt-3">(Instruktor)</h3>
+      <h1 class="mb-4 text-center">Dodaj instruktora</h1>
+      <form #myform="ngForm" name="myForm" id="myForm">
+        <div class="mb-2">
+          <label for="name" class="form-label">Imię*</label>
+          <input type="text" class="form-control" [(ngModel)]="nameForm" name="name" id="name" placeholder="Imię" required>
+        </div>
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Nazwisko*</label>
+          <input type="text" class="form-control" [(ngModel)]="lastNameForm" name="lastName" id="lastName" placeholder="Nazwisko" required>
+        </div>
+        <div class="mb-3">
+          <label for="dateOfBirth" class="form-label">Data urodzenia*</label>
+          <input type="date" class="form-control" [(ngModel)]="dateOfBirthForm" name="dateOfBirth" id="dateOfBirth" required>
+        </div>
+        <div class="mb-3">
+          <label for="placeOfBirth" class="form-label">Miejsce urodzenia*</label>
+          <input type="text" class="form-control" [(ngModel)]="placeOfBirthForm" name="placeOfBirth" id="placeOfBirth" placeholder="Miejsce urodzenia" required>
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Adres*</label>
+          <input type="text" class="form-control" [(ngModel)]="addressForm" name="address" id="address" placeholder="Adres" required>
+        </div>
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Nr. Telefonu*</label>
+          <input type="tel" class="form-control" [(ngModel)]="phoneNumberForm" name="phoneNumber" id="phoneNumber" placeholder="Nr. Telefonu" pattern="[0-9]{9}" required>
+        </div><br><br>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" [(ngModel)]="emailForm" name="email" id="email" placeholder="Email" email required>
+        </div>
+
+        <div class="d-grid gap-3 mb-5">
+          <button type="submit" class="btn btn-danger mt-5" [disabled]="!myform.valid" (click)="addInstructorRoute()">Zapisz</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

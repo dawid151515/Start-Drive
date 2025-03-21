@@ -1,0 +1,18 @@
+<div class="mainContainer">
+
+  <app-driving-school-menu [pageNameParent]="pageName"></app-driving-school-menu>
+
+  <h1>Edytuj/Usuń szkołę jazdy</h1>
+  <div class="row mx-auto mainRow">
+    <div class="col-6">
+      <div class="editButton">
+        <button (click)="editSchoolDialog()">Edytuj dane szkoły jazdy</button>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="deleteButton">
+        <button (click)="deleteSchoolDialog()">Usuń szkołę jazdy</button>
+      </div>
+    </div>
+  </div>
+</div>

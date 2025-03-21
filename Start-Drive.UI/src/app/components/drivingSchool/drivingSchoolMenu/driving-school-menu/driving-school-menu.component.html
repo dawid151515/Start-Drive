@@ -1,0 +1,21 @@
+<div class="logo">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand mx-auto" href="startDrive/stronaGlowna/{{schoolId}}">StartDrive</a>
+    </div>
+  </nav>
+</div>
+<div class="topnav">
+  <div class="mainMenu">
+    <a class="active" href="startDrive/stronaGlowna/{{schoolId}}"><label>Strona główna</label></a>
+    <a href="startDrive/stronaGlowna/turyKursow/{{schoolId}}"><label>Tury kursów</label></a>
+    <a href="startDrive/stronaGlowna/kalendarz/{{schoolId}}"><label>Kalendarz główny</label></a>
+    <a href="startDrive/stronaGlowna/informacje/{{schoolId}}"><label>Informacje dla ...</label></a>
+    <a href="startDrive/stronaGlowna/forum/{{schoolId}}"><label>Forum</label></a>
+  </div>
+
+  <div class="userName">
+    <a href="startDrive/stronaGlowna/edytujUsun/{{schoolId}}"><label>{{schoolUser.email}}</label></a>
+    <button (click)="logOut()">Wyloguj</button>
+  </div>
+</div>

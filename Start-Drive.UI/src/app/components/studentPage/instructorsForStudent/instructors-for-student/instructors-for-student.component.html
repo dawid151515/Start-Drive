@@ -1,0 +1,89 @@
+<div class="mainContainer">
+
+  <app-student-menu [pageNameParent]="pageName"></app-student-menu>
+
+  <h1 class="mb-4 mt-2 text-center">Instruktorzy</h1><br>
+
+  <div class="row text-center m-0">
+
+    <ng-container *ngIf="arrayPersons.length>0; then areInstructors; else noInstructors"></ng-container>
+
+    <ng-template #areInstructors>
+      <div class="row mx-auto mainRow">
+        <ng-container *ngFor="let instructor of arrayPersons; let i=index">
+
+          <ng-container *ngIf="i == index">
+            <div class="col-12">
+              <div class="mainColClick mt-1 mb-5">
+                <img src="assets/instructors/default5.png" alt="" class="img-thumbnail imgVisible mt-5" (click)="showInstructor(i)"><br>
+                <label class="fs-4">{{instructor.name}} {{instructor.lastName}}</label>
+
+                <app-instuctors-calendar-for-student [selectedInstructorParent]="selectInstructor"
+                  [calendarStudentsDriveAll]="calendarStudentsDriveAll" [BreakBetweenRides]="BreakBetweenRidesMain"
+                  [daysAndHours]="daysAndHoursMain" [freeDaysCalendar]="freeDaysCalendarMain"
+                  [freeDaysInstructor]="instructorDaysOff"></app-instuctors-calendar-for-student>
+
+                <div class="mainColTextHidden">
+
+                  <table class="table table-striped mb-5">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" colspan="2">Dane instruktora</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td><span>Imie:</span></td>
+                        <td>{{instructor.name}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td><span>Nazwisko:</span></td>
+                        <td>{{instructor.lastName}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td><span>Tel.:</span></td>
+                        <td>{{instructor.phoneNumber}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="rocdw">4</th>
+                        <td><span>E-mail:</span></td>
+                        <td>{{instructor.email}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div>
+          </ng-container>
+
+          <div class="col-3 mb-5" *ngIf="i != index">
+            <div class="mainCol" (click)="showInstructor(i)">
+              <img src="assets/instructors/default5.png" alt="" class="img-thumbnail mt-2 imgVisibleMain">
+
+              <div class="mainColText">
+                <label class="fs-4">{{instructor.name}} {{instructor.lastName}},</label><br>
+                <label><span>Tel.:</span> {{instructor.phoneNumber}},</label><br>
+                <label><span>E-mail:</span> {{instructor.email}}</label>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-template>
+
+    <ng-template #noInstructors>
+      <div class="row mx-auto noRow">
+        <div class="col-12 noInstructors">
+          <h4>Brak instruktorów</h4>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

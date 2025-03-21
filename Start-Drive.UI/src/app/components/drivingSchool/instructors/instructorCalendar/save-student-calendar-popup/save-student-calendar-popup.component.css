@@ -1,0 +1,169 @@
+.signUpStudentHour{
+  width: 600px;
+  text-align: center;
+  max-height: 700px;
+  overflow-y: auto;
+}
+.signUpStudentHour form{
+  text-align: left;
+}
+.wrapper{
+  margin-top: 20px;
+  margin-bottom: 5px;
+  padding: 0 50px;
+}
+.wrapper .searchInput{
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+}
+.searchInput input{
+  height: 55px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 60px 0 20px;
+  font-size: 18px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 1);
+}
+.searchInput .icon{
+  height: 55px;
+  width: 55px;
+  line-height: 55px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+}
+.searchInput .autocomBox{
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 1;
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 1);
+  border-radius: 5px;
+}
+.autocomBox li{
+  list-style: none;
+  padding: 8px 12px;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
+}
+.autocomBox li:hover{
+  background-color: #E0E0E0;
+}
+h2{
+  background-color: #E0E0E0;
+  width: 100%;
+  padding: 15px 20px;
+}
+img{
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+}
+.dataDiv{
+  display: inline-block;
+  margin-top: 5px;
+}
+.labelInput label, .hourFromTo label, .description label{
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+.hourFromTo input{
+  height: 50px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 15px 0 15px;
+  font-size: 18px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 1);
+  letter-spacing: 1px;
+}
+.hourFromTo input[type="time"]::-webkit-calendar-picker-indicator{
+  cursor: pointer;
+}
+
+.startHour input:invalid + small::after, .endHour input:invalid + small::after{
+  content: "Nieprawidłowa godzina";
+}
+.hoursInfo{
+  font-size: 13px;
+}
+small{
+  color: red;
+  padding: 10px;
+}
+.hourFromTo input[type=time]::-webkit-inner-spin-button{
+  background-color: red;
+}
+.description textarea{
+  width: 100%;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 1);
+  font-size: 18px;
+  min-height: 70px;
+  max-height: 140px;
+}
+
+.mainColorPicker{
+  width: 100%;
+  text-align: right;
+}
+select{
+  width: 70px;
+  height: 40px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.buttonDiv{
+  width: 100%;
+  text-align: center;
+}
+button{
+  padding: 15px 25px;
+  font-size: 20px;
+  background-color: #808080;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid #808080;
+}
+button:hover{
+  background-color: #A0A0A0;
+}
+button:disabled{
+  background-color: #A0A0A0;
+}
+
+#registerStudent, #setDayOff{
+  margin: 0 5px;
+}
+.registerStudentSetDayOffLabel, .registerStudentSetDayOffLabel1{
+  font-size: 17px;
+}
+.registerStudentSetDayOffLabel:hover, .registerStudentSetDayOffLabel1:hover, #registerStudent:hover, #setDayOff:hover{
+  cursor: pointer;
+}
+.registerStudentSetDayOffLabel{
+  margin-right: 50px;
+}
+.radio1{
+  margin-right: 20px;
+}
+.radio1, .radio2{
+  border: 1px solid #E0E0E0;
+  padding: 10px;
+  border-radius: 5px;
+}

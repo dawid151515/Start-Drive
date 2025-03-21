@@ -1,0 +1,16 @@
+<div class="showInformationMain">
+  <h2>Cała treść informacji</h2>
+
+  <label class="mb-1">Informacja dla: {{showInformation.forWhom | transformInformation}}</label><br>
+  <hr>
+  <div class="showInformation mb-4 mt-4">
+    <div class="informationContent">
+      <label>{{showInformation.info}}</label>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="readButton">
+      <button mat-dialog-close>Przeczytane</button>
+    </div>
+  </div>
+</div>

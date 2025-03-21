@@ -1,0 +1,123 @@
+<div class="mainContainer">
+
+  <app-instructor-menu [pageNameParent]="pageName"></app-instructor-menu>
+
+  <h1 class="mb-4 mt-2 text-center">Kursanci</h1><br>
+  <div class="row text-center m-0">
+
+    <ng-container *ngIf="arrayPersons.length>0; then areStudents; else noStudents"></ng-container>
+
+    <ng-template #areStudents>
+      <div class="row mx-auto mainRow">
+        <ng-container *ngFor="let student of arrayPersons; let i=index">
+
+          <ng-container *ngIf="i == index">
+            <div class="col-12">
+              <div class="mainColClick mt-1 mb-5">
+                <img src="assets/instructors/default4.png" alt="" class="img-thumbnail imgVisible mt-5" (click)="showStudents(i)"><br>
+                <label class="fs-4 mb-4">{{student.name}} {{student.lastName}}</label>
+
+                <div class="drivingLesonsAll">
+                  {{drivingLessonsForAStudent(student)}}
+
+                  <div class="h4Div">
+                    <br>
+                    <h4>Wszystkie lekcje jazdy kursanta</h4>
+                    <hr>
+                  </div>
+                  <ng-container *ngIf="lessonsForSelectStudent.length != 0">
+                    <ng-container *ngFor="let lessons of lessonsForSelectStudent">
+
+                      <div class="drivingLesson">
+                        <div class="lessonData">
+                          {{convertLocaleDate(lessons.dateAddedDrive)}}
+                        </div>
+                        <div class="drivingHour">
+
+                          <label>Godziny jazd:</label><br>
+
+                          <div class="drivingHourFrom">
+                            {{lessons.mainHourFrom | transformHour}}
+                          </div>
+                          <div class="drivingHourTo">
+                            {{lessons.mainHourTo | transformHour}}
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngIf="lessonsForSelectStudent.length == 0">
+                    <label>Brak lekcji jazdy</label>
+                  </ng-container>
+                </div>
+
+                <div class="totalLessonHoursMain">
+                  <div class="totalLessonHours">
+                    Suma godzin jazd to: <br>
+                    <span class="lessonHoursSpan">{{totalDrivingLessonsHours}} h</span>
+                  </div>
+                </div>
+
+                <div class="mainColTextHidden mt-5">
+
+                  <table class="table table-striped mb-5">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" colspan="2">Dane kursanta</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td><span>Imie:</span></td>
+                        <td>{{student.name}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td><span>Nazwisko:</span></td>
+                        <td>{{student.lastName}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td><span>Tel.:</span></td>
+                        <td>{{student.phoneNumber}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td><span>E-mail:</span></td>
+                        <td>{{student.email}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <div class="col-3 mb-5" *ngIf="i != index">
+            <div class="mainCol" (click)="showStudents(i)">
+              <img src="assets/instructors/default4.png" alt="" class="img-thumbnail mt-2 imgVisibleMain">
+
+              <div class="mainColText">
+                <label class="fs-4">{{student.name}} {{student.lastName}},</label><br>
+                <label><span>Tel.:</span> {{student.phoneNumber}},</label><br>
+                <label><span>E-mail:</span> {{student.email}}</label>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-template>
+
+    <ng-template #noStudents>
+      <div class="row mx-auto noRow">
+        <div class="col-12 noStudents">
+          <h4>Brak kursantów</h4>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

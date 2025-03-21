@@ -1,0 +1,53 @@
+<div class="logo">
+  <nav class="navbar navbar-expand-lg">
+    <div class="logoContainer mx-auto">
+      <a class="navbar-brand mx-auto">StartDrive</a>
+    </div>
+  </nav>
+</div>
+<div class="mainContainer">
+  <div class="container pt-4 pb-4">
+    <div class="row">
+      <div class="col-6 mx-auto col6">
+        <h3 class="text-center mt-3">(Kursant)</h3>
+        <h1 class="mb-4 text-center">Zarejestruj się</h1>
+        <form #myform="ngForm" name="myForm" id="myForm">
+          <div class="mb-2">
+            <label for="generateSchoolId" class="form-label" title="Podaj numer identyfikacyjny wygenerowany przez szkołę jazdy">Numer indentyfikacyjny*</label>
+            <input type="text" class="form-control" [(ngModel)]="generatedCode" name="generateSchoolId" id="generateSchoolId"  placeholder="Nr. Identyfikacyjny" title="Podaj numer identyfikacyjny wygenerowany przez szkołę jazdy" required>
+            <small class="textMuted">(Podaj numer identyfikacyjny wygenerowany przez szkołę jazdy)</small><br>
+            <small class="valid" [hidden]="invalidCode">Niepoprawny numer!</small>
+          </div>
+          <div class="mb-3">
+            <label for="schoolEmail" class="form-label" title="Podaj email szkoły jazdy">Email szkoły jazdy*</label>
+            <input type="email" class="form-control" [(ngModel)]="schoolEmail" name="schoolEmail" id="schoolEmail" placeholder="Email szkoły jazdy" title="Podaj email szkoły jazdy" email required>
+            <small class="valid" [hidden]="invalidSchool">Niepoprawny email szkoły jazdy!</small>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label" title="Podaj email podany przez szkołę jazdy">Email kursanta*</label>
+            <input type="email" class="form-control" [(ngModel)]="studentEmail" name="email" id="email" placeholder="Email" title="Podaj email podany przez szkołę jazdy" email required>
+            <small class="valid" [hidden]="invalidStudent">Niepoprawny email kursanta!</small>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Hasło*</label>
+            <input [(ngModel)]="passwordValue" (input)="checkedPassword()" name="password" type="password" class="form-control" id="password" placeholder="Hasło" required>
+
+            <small [hidden]="passwordLength">Hasło musi zawierać min. 6 znaków</small>
+          </div>
+          <div class="mb-3">
+            <label for="repeatPassword" class="form-label">Powtorz hasło*</label>
+            <input [(ngModel)]="repeatPasswordValue" (input)="checkedPassword()" type="password" class="form-control" name="repeatPassword" id="repeatPassword" placeholder="Powtorz hasło" required>
+
+            <small [hidden]="!isDisable">Hasła nie są takie same</small>
+            <small class="valid" [hidden]="invalidData">Niepoprawne dane!</small>
+          </div>
+
+          <div class="d-grid gap-3 mb-5">
+            <button type="submit" class="btn btn-danger mt-5" [disabled]="isDisable || !myform.valid" (click)="addStudentAccountRoute()">Zarejestruj się</button>
+            <a class="btn btn-secondary" href="startDrive/logowanie">Zaloguj się</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

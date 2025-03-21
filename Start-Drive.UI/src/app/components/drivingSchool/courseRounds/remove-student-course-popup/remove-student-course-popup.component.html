@@ -1,0 +1,18 @@
+<div class="removeStudentCourseMain">
+  <h2>Usuń kursanta z tury kursu</h2>
+  <div class="removeStudentCourse mb-5 mt-4">
+    {{getStudent(selectedStudentFromCourseRound.courseRoundStudentId)}}
+    <label class="mb-4">
+      Czy na pewno chcesz usunąć wybranego kursanta z tury kursu?<br>
+      ({{findStudent.email}})
+    </label><br>
+    <div class="row">
+      <div class="buttonYes col-6">
+        <button (click)="removeStudentCourseRoundRoute()">Tak</button>
+      </div>
+      <div class="buttonNo col-6">
+        <button mat-dialog-close>Nie</button>
+      </div>
+    </div>
+  </div>
+</div>

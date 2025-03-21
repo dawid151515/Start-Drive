@@ -1,0 +1,34 @@
+.container{
+  width: 600px;
+  padding: 0;
+  text-align: center;
+}
+h1{
+  padding: 20px;
+  background-color: #FFB266;
+}
+.textToEdit{
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.textToEdit textarea{
+  width: 80%;
+  padding: 10px;
+  min-height: 120px;
+  max-height: 440px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+  letter-spacing: 0.5px;
+}
+.editButton{
+  margin-bottom: 30px;
+}
+.editButton button{
+  font-size: 15px;
+  border-radius: 5px;
+  background-color: #C0C0C0;
+  padding: 5px 15px;
+}
+.editButton button:hover{
+  background-color: #E0E0E0;
+}

@@ -1,0 +1,117 @@
+.mainFreeHour{
+  text-align: center;
+  width: 700px;
+}
+.mainFreeHour form{
+  text-align: left;
+}
+.wrapper{
+  margin: 20px auto;
+  padding: 0 50px;
+  height: 440px;
+}
+h2{
+  background-color: #FFCC99;
+  width: 100%;
+  padding: 20px;
+}
+
+.dateFromTo input, .otherOptions input{
+  height: 55px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 15px 0 15px;
+  font-size: 18px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 1);
+  letter-spacing: 1px;
+}
+.dateFromTo input[type="date"]::-webkit-calendar-picker-indicator{
+  cursor: pointer;
+}
+select, .otherOptions input{
+  width: 100%;
+  height: 40px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+  cursor: pointer;
+}
+.otherOptions input{
+  cursor: text;
+}
+.buttonDiv{
+  width: 100%;
+  text-align: center;
+}
+.addAbsenceButton, .seeAbsenceButton{
+  background-color: #fff;
+  color: black;
+  margin-left: 10px;
+  padding: 10px 20px;
+  font-size: 15px;
+  border: 1px solid #808080;
+  border-radius: 5px 5px 0 0;
+}
+.addAbsenceButton:hover, .seeAbsenceButton:hover{
+  background-color: #fff;
+}
+.absenceButtonClick {
+  border-bottom: none;
+  padding-top: 15px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+  font-size: 15.5px;
+}
+small{
+  color: red;
+}
+button{
+  padding: 15px 25px;
+  font-size: 20px;
+  background-color: #808080;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid #808080;
+}
+button:hover{
+  background-color: #A0A0A0;
+}
+button:disabled{
+  background-color: #A0A0A0;
+}
+
+/* see absences tab */
+
+.absenceMain{
+  padding: 5px;
+  border: 1px solid #A0A0A0;
+}
+.value{
+  margin-top: 7px;
+  margin-bottom: 5px;
+}
+.setTable{
+  max-height: 360px;
+  overflow-y: auto;
+}
+.noAbsences{
+  margin-top: 100px;
+  font-size: 20px;
+  padding: 20px;
+  border: 1px solid #A0A0A0;
+}
+tr td span{
+  font-style: italic;
+}
+.icon{
+  cursor: pointer;
+}
+.fromTo{
+  width: 110px;
+}
+.divValue{
+  white-space: pre-wrap;
+  word-break: break-word;
+}

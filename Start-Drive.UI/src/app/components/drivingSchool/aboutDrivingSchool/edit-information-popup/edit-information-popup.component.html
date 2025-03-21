@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Edytuj text</h1>
+  <div class="textToEdit">
+    <textarea [(ngModel)]="sendData" [ngModelOptions]="{standalone: true}" name="edit" id="edit"></textarea>
+  </div>
+  <div class="editButton">
+    <button (click)="updateADrivingSchoolRoute()">Zapisz</button>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+h2{
+  margin-bottom: 0px;
+}
+.h4div{
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+}
+.drivingLesonsAll{
+  min-width: 600px;
+  border: 2px solid #606060;
+  margin: 10px;
+  border-radius: 5px;
+  padding: 15px;
+  max-height: 370px;
+  overflow-y: auto;
+  text-align: center;
+}
+.drivingLesson{
+  border: 1px solid #404040;
+  border-radius: 3px;
+  width: 32%;
+  display: inline-block;
+  text-align: left;
+  height: 90px;
+  background-color: #F5F5F5;
+  vertical-align: top;
+  margin: 5px 2px;
+  min-width: 190px;
+}
+.lessonData{
+  background-color: #99FF99;
+  width: 100%;
+  text-align: center;
+}
+.drivingHour{
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  background-color: #FFF;
+}
+.drivingHour label{
+  margin: 5px 0px;
+}
+.drivingHourFrom{
+  display: inline-block;
+  padding: 9px 0px;
+  background-color: #E5FFCC;
+  width: 50%;
+}
+.drivingHourTo{
+  display: inline-block;
+  padding: 9px 0px;
+  background-color: #CCFF99;
+  width: 50%;
+}
+.totalLessonHoursMain{
+  width: 100%;
+  text-align: right;
+  padding: 10px;
+}
+.totalLessonHoursMain .totalLessonHours{
+  font-size: 14px;
+  border: 5px double #C0C0C0;
+  border-radius: 5px;
+  padding: 15px;
+  width: 190px;
+  text-align: center;
+  display: inline-block;
+}
+.totalLessonHoursMain .totalLessonHours .lessonHoursSpan{
+  display: inline-block;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+.buttonDiv{
+  text-align: center;
+  margin-bottom: 20px;
+}
+.buttonDiv button{
+  padding: 10px 60px;
+  background-color: #A0A0A0;
+  border-radius: 5px;
+}
+.buttonDiv button:hover{
+  background-color: #E0E0E0;
+}

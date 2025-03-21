@@ -1,0 +1,85 @@
+.logo a{
+  background-color: #FF0000;
+  padding: 5px 10px;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+}
+.logo a:hover{
+  background-color: #FF3333;
+}
+.logo nav{
+  background-color: #CC0000;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  border-top: 3px solid #660000;
+  background-color: #333;
+  overflow: hidden;
+  margin-bottom: 60px;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 7px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border-right: 2px solid #FFFFFF;
+}
+
+/* Change the color of links on hover */
+.topnav a label:hover{
+  background-color: #C0C0C0;
+  color: black;
+  cursor: pointer;
+}
+.topnav a label{
+  padding: 7px;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #FF6666;
+  color: white;
+}
+.topnav a.active label:hover{
+  background-color: #FF6666;
+  color: white;
+}
+
+.userName{
+  float: right;
+  margin-top: 9px;
+}
+.userName a{
+  border-right: none;
+  background-color: #E0E0E0;
+  padding: 5px;
+  color: black;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+.userName a label{
+  padding: 0;
+}
+.userName button{
+  align-items: top;
+  background-color: #C0C0C0;
+  padding: 5px;
+  color: black;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-left: 5px;
+  border-radius: 2px;
+}
+.userName button:hover{
+  background-color: #E0E0E0;
+}

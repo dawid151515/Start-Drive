@@ -1,0 +1,77 @@
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="calendar-day-outside">
+  <div class="calendar_days">
+
+    <div class="calendar-Data">
+      <div class="calendar-Data-label"><label>{{dateString}}</label></div>
+    </div>
+
+    <hr class="hr" />
+
+    <ng-container *ngIf="freeDayCalendarVariable == false || dayAndHoursVariable == false">
+      <div class="close">Zamknięte</div>
+    </ng-container>
+
+
+    <!-- calendar -->
+
+    <div class="task_calendar_days">
+      <table class="table table-bordered mb-5">
+        <tbody>
+          <ng-container *ngFor="let calenderHours of studentsHoursCalendarList">
+            <ng-container *ngIf="calenderHours.MainHourDriveStudents?.length!=0">
+              {{itemsInCalendarFunction()}}
+              <tr>
+                <th scope="row" class="thRow" style="min-width: 100px">{{calenderHours.HourNumber}}:00</th>
+
+                <td>
+                  <ng-container *ngFor="let driveH of calenderHours.MainHourDriveStudents">
+                    {{getInstructorById(driveH.instructorId)}}
+
+                    <div class="mt-2 text-center lessons">
+                      <div class="studentsInCalendar text-center d-inline-block" [style]='driveH.color'>
+                        <label class="d-inline-block mb-1">
+                          Od: <span>{{driveH.mainHourFrom | transformHour}}</span><br>
+                          Do: <span>{{driveH.mainHourTo | transformHour}}</span><br>
+                        </label>
+
+                        <ng-container *ngIf="freeHourInDay == ''">
+                          <img src="assets/instructors/default5.png" alt="" class="img-thumbnail d-inline-block">
+                        </ng-container>
+                        <label class="d-inline-block">
+
+                          <ng-container *ngIf="freeHourInDay == ''">
+                            <span>{{getInstructor.name}} {{getInstructor.lastName}} (instruktor)</span><br>
+                            E-mail: <span>{{getInstructor.email}}</span>, Tel.:
+                            <span>{{getInstructor.phoneNumber}}</span>
+                          </ng-container>
+
+                          <ng-container *ngIf="freeHourInDay != ''">
+                            <span>{{freeHourInDay}}</span><br>
+                            <span>_____________________________</span>
+                          </ng-container>
+                          <div class="hourInfo">
+                            <span class="hourInfoText">
+                              Opis: {{driveH.description}}
+                            </span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </ng-container>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-container>
+
+          <ng-container *ngIf="areItemsInCalendar == false">
+            <div class="noLessons">
+              <label>Brak lekcji jazdy na dzisiaj</label>
+            </div>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>

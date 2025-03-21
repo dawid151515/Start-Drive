@@ -1,0 +1,49 @@
+<div class="logo mb-5">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand mx-auto">StartDrive</a>
+    </div>
+  </nav>
+</div>
+<div class="container">
+
+  <div class="logIn mx-auto">
+    <div class="row">
+      <div class="col-12 mx-auto p-5 col12">
+        <h1 class="mb-4 text-center">Zaloguj się</h1>
+
+        <form>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" [(ngModel)]="emailForm" [ngModelOptions]="{standalone: true}" name="email" id="email" placeholder="Email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Hasło</label>
+            <input type="password" class="form-control" [(ngModel)]="passwordForm" [ngModelOptions]="{standalone: true}" name="password" id="password" placeholder="Hasło" required>
+            <small>{{invalidLoginDetails}}</small>
+          </div>
+
+          <div class="btn-group btn-group-toggle mb-5 checkedButtons" data-toggle="buttons">
+            <label class="btn btn-danger {{active1}} styleButton">
+              <input type="radio" name="checkRadioOptions" id="checkStudent" autocomplete="off" (click)="button1()" checked> Kursant
+            </label>
+            <label class="btn btn-danger {{active2}} styleButton">
+              <input type="radio" name="checkRadioOptions" id="checkInstructor" autocomplete="off" (click)="button2()"> Instruktor
+            </label>
+            <label class="btn btn-danger {{active3}} styleButton">
+              <input type="radio" name="checkRadioOptions" id="checkDrivingSchool" autocomplete="off" (click)="button3()"> Szkoła jazdy
+            </label>
+          </div>
+
+          <div class="d-grid gap-3">
+            <button type="submit" class="btn btn-primary loginButton" (click)="checkedLoginPassword()">Zaloguj</button>
+
+            <a class="btn btn-secondary" href="startDrive/rejestracja">Zarejestruj się</a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

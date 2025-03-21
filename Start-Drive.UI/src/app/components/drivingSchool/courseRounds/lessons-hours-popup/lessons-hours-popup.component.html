@@ -1,0 +1,47 @@
+<div class="h4div">
+  <h2>Wszystkie lekcje jazdy kursanta</h2>
+  <h3>{{studentEmail}}</h3>
+  <hr>
+</div>
+
+<div class="drivingLesonsAll">
+  {{drivingLessonsForAStudent()}}
+
+  <ng-container *ngIf="lessonsForSelectStudent.length != 0">
+    <ng-container *ngFor="let lessons of lessonsForSelectStudent">
+      {{getInstructorById(lessons.instructorId)}}
+      <div class="drivingLesson">
+        <div class="lessonData">
+          {{convertLocaleDate(lessons.dateAddedDrive)}}
+        </div>
+        <div class="drivingHour">
+          <div class="drivingHourFrom">
+            {{lessons.mainHourFrom | transformHour}}
+          </div>
+          <div class="drivingHourTo">
+            {{lessons.mainHourTo | transformHour}}
+          </div>
+        </div>
+        <div class="instructorDetails">
+          {{selectedInstructor.name}} {{selectedInstructor.lastName}}<br>
+          {{selectedInstructor.email}}
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="lessonsForSelectStudent.length == 0">
+    <label>Brak lekcji jazdy</label>
+  </ng-container>
+</div>
+
+<div class="totalLessonHoursMain">
+  <div class="totalLessonHours">
+    Suma godzin jazd to: <br>
+    <span class="lessonHoursSpan">{{totalDrivingLessonsHours}} h</span>
+  </div>
+</div>
+
+<div class="buttonDiv">
+  <button mat-dialog-close>Zamknij</button>
+</div>

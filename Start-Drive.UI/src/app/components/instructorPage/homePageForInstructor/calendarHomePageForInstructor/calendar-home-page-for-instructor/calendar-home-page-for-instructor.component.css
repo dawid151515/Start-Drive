@@ -1,0 +1,139 @@
+/*CALENDAR DAYS*/
+
+.calendar_days .calendar-Data{
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+}
+.calendar_days .calendar-Data .calendar-Data-label{
+  display: inline-block;
+  border: 2px solid #FFFFFF;
+  border-radius: 7px;
+  padding: 5px 30px;
+  margin: 7px 0;
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+hr{
+  color: #FFFFFF;
+}
+tbody{
+  background-color: rgb(170, 170, 170, 0.8);
+}
+.close{
+  width: 100%;
+  background-color: #E0E0E0;
+  padding: 21px 0px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.absence{
+  width: 100%;
+  padding: 10px 10px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  max-height: 90px;
+  overflow-y: auto;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+img{
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  margin-left: 5px;
+  vertical-align: top;
+}
+.studentsInCalendar label{
+  margin-left: 5px;
+  font-size: 11px;
+  letter-spacing: 0.2px;
+  background-color: #E0E0E0;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+span{
+  font-weight: bold;
+}
+.studentsInCalendar{
+  text-align: center;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+.hourInfo{
+  position: relative;
+  display: block;
+  top: -50px;
+}
+.hourInfo .hourInfoText{
+  visibility: hidden;
+  min-width: 200px;
+  background-color: #606060;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight:400;
+  letter-spacing: 0.5px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+
+  bottom: 100%;
+  left: 40%;
+  /* Use half of the width (120/2 = 60), to center the tooltip */
+  margin-left: -100px;
+}
+
+/* down arrow */
+.hourInfo .hourInfoText::after{
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #606060 transparent transparent transparent;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.studentsInCalendar:hover .hourInfo .hourInfoText, label:hover .hourInfo .hourInfoText{
+  visibility: visible;
+}
+.icon{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 7px;
+  padding: 5px;
+  margin-left: 5px;
+  height: 100%;
+  cursor: pointer;
+}
+.lessons{
+  margin-right: 5px;
+}
+.task_calendar_days{
+  padding: 20px 0 0 0;
+}
+
+.thRow {
+  position: sticky;
+  left: 0;
+  outline: 0.5px solid #E0E0E0;
+}
+.noStudents{
+  text-align: center;
+  border: 2px solid #404040;
+  margin-top: 50px;
+  padding: 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  background-color: #FFF;
+  margin: 10px;
+}

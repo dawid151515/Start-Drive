@@ -1,0 +1,18 @@
+<div class="mainContainer">
+
+  <app-student-menu [pageNameParent]="pageName"></app-student-menu>
+
+  <h1>Pokaż/Usuń konto kursanta</h1>
+  <div class="row mx-auto mainRow">
+    <div class="col-6">
+      <div class="editButton">
+        <button (click)="showStudentDialog()">Pokaż dane kursanta</button>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="deleteButton">
+        <button (click)="deleteStudentDialog()">Usuń konto kursanta</button>
+      </div>
+    </div>
+  </div>
+</div>

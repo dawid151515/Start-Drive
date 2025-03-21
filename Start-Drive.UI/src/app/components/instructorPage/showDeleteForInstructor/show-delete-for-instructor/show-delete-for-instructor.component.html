@@ -1,0 +1,18 @@
+<div class="mainContainer">
+
+  <app-instructor-menu [pageNameParent]="pageName"></app-instructor-menu>
+
+  <h1>Pokaż/Usuń szkołę jazdy</h1>
+  <div class="row mx-auto mainRow">
+    <div class="col-6">
+      <div class="showButton">
+        <button (click)="showInstructorDialog()">Pokaż dane instruktora</button>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="deleteButton">
+        <button (click)="deleteInstructorDialog()">Usuń konto instruktora</button>
+      </div>
+    </div>
+  </div>
+</div>

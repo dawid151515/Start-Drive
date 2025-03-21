@@ -1,0 +1,74 @@
+<div class="mainContainer">
+
+  <app-student-menu [pageNameParent]="pageName"></app-student-menu>
+
+  <h1 class="mb-0 mt-4 pt-4 text-center h1Main">Strona główna</h1><br>
+
+  <div class="middleContainer">
+    <div class="container pt-2">
+
+      <div class="row pt-5">
+
+        <div class="col-6">
+          <div class="divCol1">
+            <div class="row">
+
+              <div class="col-12">
+                <a href="startDrive/kursant/stronaGlowna/kalendarz/{{schoolId}}/{{studentId}}" class="btn btn-secondary courses">
+                  <h2>Kalendarz główny</h2>
+                </a>
+              </div>
+              <div class="col-6">
+                <a href="startDrive/kursant/stronaGlowna/instruktorzy/{{schoolId}}/{{studentId}}" class="btn btn-secondary">
+                  <h2>Instruktorzy</h2>
+                </a>
+              </div>
+              <div class="col-6">
+                <a href="startDrive/kursant/stronaGlowna/forum/{{schoolId}}/{{studentId}}" class="btn btn-secondary">
+                  <h2>Forum</h2>
+                </a>
+              </div>
+
+              <div class="col-12">
+                <a href="startDrive/kursant/stronaGlowna/informacje/{{schoolId}}/{{studentId}}" class="btn btn-secondary courses">
+                  <h2>Informacje dla kursantów</h2>
+                </a>
+              </div>
+
+              <div class="col-6">
+                <a href="startDrive/kursant/stronaGlowna/pokazUsun/{{schoolId}}/{{studentId}}" class="btn btn-secondary">
+                  <h2>Pokaż/Usuń dane</h2>
+                </a>
+              </div>
+
+              <div class="col-6">
+                <a href="startDrive/kursant/stronaGlowna/oSzkoleJazdy/{{schoolId}}/{{studentId}}" class="btn btn-secondary">
+                  <h2>Informacje o szkole jazdy</h2>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+
+          <div class="calendarForToday">
+
+            <ng-container *ngIf="initVariable == true; then initCalendar;"></ng-container>
+
+            <ng-template #initCalendar>
+
+              <app-calendar-home-page-for-student [dayParent]="day" [monthValueNumberParent]="month"
+                [yearValueNumberParent]="year" [logInStudent]="logInStudent" [arrayInstructors]="arrayInstructors"
+                [calendarStudentsDriveAll]="calendarLogInStudentDriveAll" [freeDaysCalendar]="freeDaysCalendar"
+                [daysAndHours]="daysAndHours"></app-calendar-home-page-for-student>
+
+            </ng-template>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

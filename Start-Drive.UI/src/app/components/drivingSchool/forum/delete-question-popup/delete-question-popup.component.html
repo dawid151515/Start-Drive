@@ -1,0 +1,17 @@
+<div class="deleteQuestionMain">
+  <h2>Usuń pytanie</h2>
+  <div class="deleteQuestion mb-5 mt-4">
+    <label class="mb-4">
+      Czy na pewno chcesz usunąć wybrane pytanie?<br>
+      ({{selectedQuestion.questionText}})
+    </label><br>
+    <div class="row">
+      <div class="buttonYes col-6">
+        <button (click)="deleteQuestionRoute()">Tak</button>
+      </div>
+      <div class="buttonNo col-6">
+        <button mat-dialog-close>Nie</button>
+      </div>
+    </div>
+  </div>
+</div>

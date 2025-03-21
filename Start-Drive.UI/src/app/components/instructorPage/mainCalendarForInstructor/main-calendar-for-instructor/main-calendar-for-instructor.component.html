@@ -1,0 +1,169 @@
+<div class="mainContainer">
+
+  <app-instructor-menu [pageNameParent]="pageName"></app-instructor-menu>
+
+  <div class="calendar-outside">
+    <div class="calendar">
+
+      <h2>Kalendarz</h2>
+
+      <ng-container *ngIf="isDisabledDay == false; then calendar; else calendarDay"></ng-container>
+
+      <ng-template #calendar>
+        {{days()}}
+        <div class="month">
+          <br>
+          <button class="prev" (click)="prevMonth()">&#10094;</button>
+          <select name="month" id="month" [(ngModel)]="currentMonthValue" (change)="days();">
+            <option value="1">Styczeń</option>
+            <option value="2">Luty</option>
+            <option value="3">Marzec</option>
+            <option value="4">Kwiecień</option>
+            <option value="5">Maj</option>
+            <option value="6">Czerwiec</option>
+            <option value="7">Lipiec</option>
+            <option value="8">Sierpień</option>
+            <option value="9">Wrzesień</option>
+            <option value="10">Październik</option>
+            <option value="11">Listopad</option>
+            <option value="12">Grudzień</option>
+          </select>
+
+          <select name="year" id="year" [(ngModel)]="currentYearValue" (change)="days()">
+            <ng-container *ngFor="let year of yearNumberArray">
+              <option [value]="year">{{year}}</option>
+            </ng-container>
+          </select>
+          <button class="next" (click)="nextMonth()">&#10095;</button>
+          <button class="today" (click)="setCurrentData(); days()">Dzisiaj</button>
+          <br><br>
+        </div>
+
+        <div class="weekdays">
+          <div>Pon</div>
+          <div>Wt</div>
+          <div>Śr</div>
+          <div>Czw</div>
+          <div>Pt</div>
+          <div>Sob</div>
+          <div>Niedz</div>
+        </div>
+
+        <div class="days" id="days">
+
+          <ng-container *ngFor="let li of addLi; let i=index">
+
+            <ng-container
+              *ngIf="i == 0 && (currentMonthValueNumber != currentMonth || currentYearValueNumber != currentYear || currentDay != i+1)">
+
+              <a #a (click)="getDay(a.innerText, li)" [style]="setStyleBorder(li, placeDay, returnIsOpenToRead(li))">
+                <ng-container *ngIf="returnIsOpenToRead(li) == true && returnInstructorFreeDays(li) == ''">
+                  <label class="mb-1 dayNumber">{{li}}</label>
+                </ng-container>
+                <ng-container *ngIf="returnIsOpenToRead(li) == false || returnInstructorFreeDays(li) != ''">
+                  <label class="mb-1">{{li}}</label>
+                </ng-container>
+
+                <ng-container *ngIf="returnIsOpenToRead(li) != false && returnInstructorFreeDays(li) != ''">
+                  <div class="mb-1 mt-2 absence" [style]="setStyleAbsence()">{{returnInstructorFreeDays(li) | transformTypeOfAbsence: 1}}
+                    <div class="hourInfo">
+                      <span class="hourInfoText">
+                        {{returnInstructorFreeDays(li) | transformTypeOfAbsence: 2}}
+                      </span>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="returnIsOpenToRead(li) == false">
+                  <div class="mb-1 mt-2 closeSchool">Zamknięte</div>
+                </ng-container>
+              </a>
+            </ng-container>
+
+            <ng-container *ngIf="currentMonthValueNumber == currentMonth && currentYearValueNumber == currentYear && currentDay == i+1">
+
+              <a #a (click)="getDay(a.innerText, li)" *ngIf="i == 0" [style]="setStyleBorder(li, placeDay, returnIsOpenToRead(li))" style="background-color: #66B2FF">
+                <ng-container *ngIf="returnIsOpenToRead(li) == true && returnInstructorFreeDays(li) == ''">
+                  <label class="mb-1 dayNumber" style="background:#66B2FF; border-radius: 30px; padding-left:4px; padding-right:4px">{{li}}</label>
+                </ng-container>
+                <ng-container *ngIf="returnIsOpenToRead(li) == false || returnInstructorFreeDays(li) != ''">
+                  <label class="mb-1" style="background:#66B2FF; border-radius: 30px; padding-left:4px; padding-right:4px">{{li}}</label>
+                </ng-container>
+
+                <ng-container *ngIf="returnIsOpenToRead(li) != false && returnInstructorFreeDays(li) != ''">
+                  <div class="mb-1 mt-2 absence" [style]="setStyleAbsence()">{{returnInstructorFreeDays(li) | transformTypeOfAbsence: 1}}
+                    <div class="hourInfo">
+                      <span class="hourInfoText">
+                        {{returnInstructorFreeDays(li) | transformTypeOfAbsence: 2}}
+                      </span>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="returnIsOpenToRead(li) == false">
+                  <div class="mb-1 mt-2 closeSchool">Zamknięte</div>
+                </ng-container>
+              </a>
+
+              <a #a (click)="getDay(a.innerText, li)" *ngIf="i != 0" [style]="setStyleBorder(li, 'background-color: #66B2FF', returnIsOpenToRead(li))">
+                <ng-container *ngIf="returnIsOpenToRead(li) == true && returnInstructorFreeDays(li) == ''">
+                  <label class="mb-1 dayNumber" style="background:#66B2FF; border-radius: 30px; padding-left:4px; padding-right:4px">{{li}}</label>
+                </ng-container>
+                <ng-container *ngIf="returnIsOpenToRead(li) == false || returnInstructorFreeDays(li) != ''">
+                  <label class="mb-1" style="background:#66B2FF; border-radius: 30px; padding-left:4px; padding-right:4px">{{li}}</label>
+                </ng-container>
+
+                <ng-container *ngIf="returnIsOpenToRead(li) != false && returnInstructorFreeDays(li) != ''">
+                  <div class="mb-1 mt-2 absence" [style]="setStyleAbsence()">{{returnInstructorFreeDays(li) | transformTypeOfAbsence: 1}}
+                    <div class="hourInfo">
+                      <span class="hourInfoText">
+                        {{returnInstructorFreeDays(li) | transformTypeOfAbsence: 2}}
+                      </span>
+                    </div>
+                  </div>
+                </ng-container>
+
+                <ng-container *ngIf="returnIsOpenToRead(li) == false">
+                  <div class="mb-1 mt-2 closeSchool">Zamknięte</div>
+                </ng-container>
+
+              </a>
+            </ng-container>
+
+            <ng-container *ngIf="i > 0 && !(currentMonthValueNumber == currentMonth && currentYearValueNumber == currentYear && currentDay == i+1)">
+              <a #a (click)="getDay(a.innerText, li)" [style]="setStyleBorder(li, '', returnIsOpenToRead(li))">
+                <ng-container *ngIf="returnIsOpenToRead(li) == true && returnInstructorFreeDays(li) == ''">
+                  <label class="mb-2 dayNumber">{{li}}</label>
+                </ng-container>
+                <ng-container *ngIf="returnIsOpenToRead(li) == false || returnInstructorFreeDays(li) != ''">
+                  <label class="mb-2">{{li}}</label>
+                </ng-container>
+
+                <ng-container *ngIf="returnIsOpenToRead(li) != false && returnInstructorFreeDays(li) != ''">
+                  <div class="mb-1 mt-2 absence" [style]="setStyleAbsence()">{{returnInstructorFreeDays(li) | transformTypeOfAbsence: 1}}
+                    <div class="hourInfo">
+                      <span class="hourInfoText">
+                        {{returnInstructorFreeDays(li) | transformTypeOfAbsence: 2}}
+                      </span>
+                    </div>
+                  </div>
+                </ng-container>
+
+                <ng-container *ngIf="returnIsOpenToRead(li) == false">
+                  <div class="mb-1 mt-2 closeSchool">Zamknięte</div>
+                </ng-container>
+              </a>
+
+            </ng-container>
+          </ng-container>
+        </div>
+      </ng-template>
+      <ng-template #calendarDay>
+        <app-main-calendar-days-for-instructor [dayParent]="day" [monthValueNumberParent]="currentMonthValueNumber"
+          [yearValueNumberParent]="currentYearValueNumber" [arrayPersons]="arrayPersons"
+          [logInInstructor]="logInInstructor" [calendarStudentsDriveAll]="calendarStudentsDriveAll"
+          [freeDaysCalendar]="freeDaysCalendar" [freeDaysInstructor]="freeDaysInstructor" [daysAndHours]="daysAndHours"
+          (eventIsDisabledDayParent)="backCalendar($event)" (eventYearValueNumberParent)="backCalendarYear($event)"
+          (eventMonthValueNumberParent)="backCalendarMonth($event)"></app-main-calendar-days-for-instructor>
+      </ng-template>
+    </div>
+  </div><br>
+</div>

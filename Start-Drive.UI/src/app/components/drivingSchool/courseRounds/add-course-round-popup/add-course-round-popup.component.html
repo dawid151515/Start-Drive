@@ -1,0 +1,17 @@
+<div class="editCourseRoundMain">
+  <h2>Dodaj turę kursu</h2>
+  <form #myform="ngForm" name="myForm" id="myForm">
+    <div class="editCourseRound mb-5 mt-4">
+      <label>Nazwa tury:*</label><br>
+      <input type="text" [(ngModel)]="nameForm" name="name" placeholder="Nazwa tury" required><br>
+      <label>Od:*</label><br>
+      <input #startDateId type="date" (change)="validationDate(startDateId.value, endDateId.value)" [(ngModel)]="fromForm" name="from" required><br>
+      <label>Od:*</label><br>
+      <input #endDateId type="date" (change)="validationDate(startDateId.value, endDateId.value)" [(ngModel)]="toForm" name="to" required><br>
+      <small [hidden]="validationInput">Druga data powinna być większa lub równa pierwszej</small>
+      <div class="buttonYes">
+        <button [disabled]="!myform.valid || buttonDisabled" (click)="addCourseRoundRoute()">Zapisz</button>
+      </div>
+    </div>
+  </form>
+</div>

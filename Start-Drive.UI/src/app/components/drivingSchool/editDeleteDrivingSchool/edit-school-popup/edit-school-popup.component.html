@@ -1,0 +1,69 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h3 class="mt-3 text-center">(Szkoła jazdy)</h3>
+      <h1 class="mb-4 text-center">Edytuj dane szkoły jazdy</h1>
+      <form #myform="ngForm" name="myForm" id="myForm">
+        <div class="mb-2">
+          <label for="name" class="form-label">Nazwa szkoły jazdy*</label>
+          <input type="text" class="form-control" name="name" id="name" placeholder="Nazwa szkoły jazdy" [(ngModel)]="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Adres szkoły jazdy*</label>
+          <input type="text" class="form-control" name="address" id="address" placeholder="Adres szkoły jazdy" [(ngModel)]="address" required>
+        </div>
+        <div class="mb-3">
+          <label for="city" class="form-label">Miasto w którym znajduje się szkoła jazdy*</label>
+          <input type="text" class="form-control" name="city" id="city" placeholder="Miasto" [value]="drivingSchoolData.city" [(ngModel)]="city" required>
+        </div>
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Nr. Telefonu*</label>
+          <input type="tel" class="form-control" name="phoneNumber" id="phoneNumber" placeholder="Nr. Telefonu" [(ngModel)]="phoneNumber" pattern="[0-9]{9}" required>
+        </div>
+        <div class="mb-3">
+          <label for="accountNumber" class="form-label">Numer konta bankowego szkoły jazdy</label>
+          <input type="text" class="form-control" name="accountNumber" id="accountNumber" placeholder="Nr. Konta" [(ngModel)]="accountNumber">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Opis</label>
+          <input type="text" class="form-control" name="description" id="description" placeholder="Opis" [(ngModel)]="description">
+        </div><br><br>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email*</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Email" [(ngModel)]="email" email required>
+        </div>
+
+        <div class="changePassword mb-3">
+          <button type="button" (click)="changePasswordFunction()">{{changePasswordText}}</button>
+        </div>
+
+        <ng-container *ngIf="changePassword == true">
+          <div class="mb-3">
+            <label for="password" class="form-label">Hasło*</label>
+            <input [(ngModel)]="passwordValue" (input)="checkedPassword()" type="password" class="form-control" name="password" id="password" placeholder="Hasło" required>
+
+            <ng-container *ngIf="passwordValue.length<6; then shortPassword"></ng-container>
+            <ng-template #shortPassword>
+              <small>Hasło musi zawierać min. 6 znaków</small>
+            </ng-template>
+          </div>
+          <div class="mb-3">
+            <label for="repeatPassword" class="form-label">Powtorz hasło*</label>
+            <input [(ngModel)]="repeatPasswordValue" (input)="checkedPassword()" type="password" class="form-control" name="repeatPassword" id="repeatPassword" placeholder="Powtorz hasło" required>
+
+            <ng-container *ngIf="passwordValue != repeatPasswordValue; then passwordIncorrect"></ng-container>
+            <ng-template #passwordIncorrect>
+              <small>Hasła nie są takie same</small>
+            </ng-template>
+          </div>
+        </ng-container>
+
+        <div class="d-grid gap-3 mb-5">
+          <button type="submit" class="btn btn-danger mt-5" [disabled]="isDisable || !myform.valid" (click)="updateSchoolDataRoute()">Zapisz</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

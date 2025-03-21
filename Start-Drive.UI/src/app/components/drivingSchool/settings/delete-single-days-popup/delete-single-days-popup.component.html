@@ -1,0 +1,17 @@
+<div class="deleteDayMain">
+  <h2>Usuń dzień</h2>
+  <div class="deleteDay mb-5 mt-4">
+    <label class="mb-4">
+      Czy na pewno chcesz usunąć wybrany dzień?<br>
+      ({{selectedDay.dateCloseKey}})
+    </label><br>
+    <div class="row">
+      <div class="buttonYes col-6">
+        <button (click)="deleteSingleCloseRoute()">Tak</button>
+      </div>
+      <div class="buttonNo col-6">
+        <button mat-dialog-close>Nie</button>
+      </div>
+    </div>
+  </div>
+</div>

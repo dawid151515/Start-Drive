@@ -1,0 +1,84 @@
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<div class="mainContainer">
+  <app-driving-school-menu [pageNameParent]="pageName"></app-driving-school-menu>
+
+  <h1 class="mt-2">Informacje</h1>
+
+  <div class="addInformation"><button (click)="addInformationDialog()">Dodaj informację</button></div>
+
+  <div class="row mx-auto mainRow">
+    <div class="col-6">
+      <div class="informationStudents">
+        <h3>Informacje dla studentów</h3>
+        <ng-container *ngIf="informationForStudents.length>0; then isStudents; else noStudents"></ng-container>
+
+        <ng-template #isStudents>
+          <ng-container *ngFor="let studentsInfo of informationForStudents">
+
+            <div class="studentsInfo" (click)="showInformationDialog(studentsInfo)">
+              <div class="icon"><i class="fa fa-remove"
+                  (click)="deleteInformationDialog(studentsInfo.info, studentsInfo, $event)"></i></div>
+              <label>{{studentsInfo.info | transformLengthDisplayedText: 59}}</label>
+            </div>
+
+          </ng-container>
+        </ng-template>
+
+        <ng-template #noStudents>
+          <div class="noElements">
+            <label>Brak informacji dla studentów</label>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="informationInstructors">
+        <h3>Informacje dla instruktorów</h3>
+
+        <ng-container *ngIf="informationForInstructors.length>0; then isInstructors; else noInstructors"></ng-container>
+
+        <ng-template #isInstructors>
+          <ng-container *ngFor="let instructorsInfo of informationForInstructors">
+            <div class="instructorsInfo" (click)="showInformationDialog(instructorsInfo)">
+              <div class="icon"><i class="fa fa-remove"
+                  (click)="deleteInformationDialog(instructorsInfo.info, instructorsInfo, $event)"></i></div>
+              <label>{{instructorsInfo.info | transformLengthDisplayedText: 59}}</label>
+            </div>
+          </ng-container>
+        </ng-template>
+
+        <ng-template #noInstructors>
+          <div class="noElements">
+            <label>Brak informacji dla instruktorów</label>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="generalInformation">
+      <h3>Informacje ogólne</h3>
+
+      <ng-container *ngIf="generalInformation.length>0; then isGeneral; else noGeneral"></ng-container>
+
+      <ng-template #isGeneral>
+        <ng-container *ngFor="let general of generalInformation">
+          <div class="general" (click)="showInformationDialog(general)">
+            <div class="icon"><i class="fa fa-remove"
+                (click)="deleteInformationDialog(general.info, general, $event)"></i></div>
+            <label>{{general.info | transformLengthDisplayedText: 59}}</label>
+          </div>
+        </ng-container>
+      </ng-template>
+
+      <ng-template #noGeneral>
+        <div class="noElements">
+          <label>Brak informacji dla wszystkich</label>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

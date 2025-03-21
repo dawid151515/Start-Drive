@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h1 class="mb-4 text-center">Dane kursanta</h1>
+      <form>
+        <div class="mb-2">
+          <label for="name" class="form-label"><span>Imię:</span> {{logInStudent.name}}</label>
+        </div>
+        <div class="mb-3">
+          <label for="lastName" class="form-label"><span>Nazwisko:</span> {{logInStudent.lastName}}</label>
+        </div>
+        <div class="mb-3">
+          <label for="dateOfBirth" class="form-label"><span>Data urodzenia:</span> {{convertLocaleDate(logInStudent.dateOfBirth)}}</label>
+        </div>
+        <div class="mb-3">
+          <label for="placeOfBirth" class="form-label"><span>Miejsce urodzenia:</span> {{logInStudent.placeOfBirth}}</label>
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label"><span>Adres:</span> {{logInStudent.address}}</label>
+        </div>
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label"><span>Nr. Telefonu:</span> {{logInStudent.phoneNumber}}</label>
+        </div><br>
+
+        <div class="mb-1">
+          <label for="email" class="form-label"><span>Email:</span> {{logInStudent.email}}</label>
+        </div>
+
+        <div class="d-grid gap-3 mb-3">
+          <button type="submit" class="btn btn-danger mt-5" mat-dialog-close>Sprawdziłem</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

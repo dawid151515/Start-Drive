@@ -1,0 +1,98 @@
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- enroll a student -->
+<div class="mainFreeHour">
+  <h2>Nieobecność</h2>
+  <div class="wrapper">
+
+    <button class="addAbsenceButton absenceButtonClick" (click)="changeStyle1()">Dodaj nieobecność</button>
+    <button class="seeAbsenceButton" (click)="changeStyle2()">Zobacz nieobecności</button>
+
+    <ng-container *ngIf="absenceDisabled == true; then addAbsence; else seeAbsences"></ng-container>
+
+    <!-- -------------------------- add absences tab ---------------------------------------------- -->
+    <ng-template #addAbsence>
+      <div class="addAbsence mt-5">
+        <form action="">
+
+            <div class="row">
+              <div class="col-6 dateFromTo">
+                <label for="startDate">Od:</label><br>
+                <input #startDateId type="date" id="startDate" (change)="validationDate(startDateId.value, endDateId.value)" [(ngModel)]="dateAbsenceKeyFrom" [ngModelOptions]="{standalone: true}">
+              </div>
+
+              <div class="col-6 dateFromTo mb-2">
+                <label for="endDate">Do:</label><br>
+                <input #endDateId type="date" id="endDate" (change)="validationDate(startDateId.value, endDateId.value)" [(ngModel)]="dateAbsenceKeyTo" [ngModelOptions]="{standalone: true}">
+              </div>
+              <small [hidden]="validationInput">Druga data powinna być większa lub równa pierwszej</small>
+              <small [hidden]="dateExistsInput">Ta data już istanieje w nieobecnosciach, usuń ją z nieobecności lub zmień datę</small>
+            </div><br>
+
+            <div class="mainReasonForAbsence">
+              <label class="mb-2" for="reasonForAbsence">Powód nieobecności:</label><br>
+              <select #select name="reasonForAbsence" id="reasonForAbsence" (change)="choseDifferent(select.value)">
+                <option>Urlop wypoczynkowy</option>
+                <option>Urlop na żądanie</option>
+                <option>Urlop okolicznościowy</option>
+                <option>Urlop związany z rodzicielstwem</option>
+                <option>Urlop bezpłatny</option>
+                <option>Chorobowe</option>
+                <option value="inne">Inne ...</option>
+              </select>
+            </div><br>
+
+            <div class="otherOptions" [hidden]="choseDifferent(select.value)">
+              <label class="mb-2" for="otherOptionsInput">Inny powód nieobecności:</label>
+              <input type="text" id="otherOptionsInput" [(ngModel)]="differentReasonAbsenceValueForm" [ngModelOptions]="{standalone: true}" placeholder="Inny powód ...">
+            </div>
+
+
+            <div class="buttonDiv">
+              <button class="mb-4 mt-4" [disabled]="buttonDisabled" (click)="addInstructorAbsenceRoute()">Zapisz</button>
+            </div>
+        </form>
+      </div>
+    </ng-template>
+
+    <!-- -------------------------- see absences tab ---------------------------------------------- -->
+    <ng-template #seeAbsences>
+      <div class="seeAbsences mt-4">
+
+        <ng-container *ngIf="freeDaysInstructorThisMonth.length>0; then usedTable; else emptyTable"></ng-container>
+
+        <ng-template #usedTable>
+        <div class="setTable">
+          <table class="table table-striped">
+            <tbody>
+              <ng-container *ngFor="let monthAbsence of freeDaysInstructorThisMonth">
+                <tr>
+                  <td>
+                    <div class="fromTo">
+                    <span>Od: </span>{{monthAbsence.from | transformDate}} <br>
+                    <span>Do: </span>{{monthAbsence.to | transformDate}}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="divValue">
+                    <label class="value">{{monthAbsence.value}}</label>
+                    </div>
+                  </td>
+                  <td><div class="icon value" (click)="deleteFreeDaysDialog(monthAbsence)"><i class="fa fa-remove"></i></div></td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+        </ng-template>
+
+        <ng-template #emptyTable>
+          <div class="noAbsences">
+            <label>Brak nieobecności</label>
+          </div>
+        </ng-template>
+      </div>
+    </ng-template>
+  </div>
+</div>

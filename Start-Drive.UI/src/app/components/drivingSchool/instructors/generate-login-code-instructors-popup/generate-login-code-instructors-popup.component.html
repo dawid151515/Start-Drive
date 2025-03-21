@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Generuj kod do rejestracji</h2>
+  <div class="generateCode mb-5 mt-4">
+    <label>Email (login): <span>{{selectedInstructorData.email}}</span></label><br>
+    <label>Kod do rejestracji to:</label>
+    <div class="generate">
+      <span>{{generateString}}</span>
+    </div>
+    <div class="buttons mt-4">
+      <button class="generateButton" (click)="randomString()">Generuj</button>
+      <button class="btn btn-danger saveButton" [disabled]="isDisabled()" (click)="addGeneratedCodeRoute()">Zapisz</button>
+    </div>
+  </div>
+</div>

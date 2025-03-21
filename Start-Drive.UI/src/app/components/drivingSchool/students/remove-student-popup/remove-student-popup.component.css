@@ -1,0 +1,28 @@
+.removeStudentMain{
+  text-align: center;
+}
+.removeStudent{
+  padding: 0 100px;
+}
+h2{
+  background-color: #E0E0E0;
+  width: 600px;
+  padding: 20px;
+}
+label{
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+.row button{
+  width: 90%;
+  padding: 10px 20px;
+  background-color: #808080;
+  border-radius: 10px;
+  color: #fff;
+  letter-spacing: 0.5px;
+  font-size: 18px;
+  border: 2px solid #606060;
+}
+.row button:hover{
+  background-color: #A0A0A0;
+}

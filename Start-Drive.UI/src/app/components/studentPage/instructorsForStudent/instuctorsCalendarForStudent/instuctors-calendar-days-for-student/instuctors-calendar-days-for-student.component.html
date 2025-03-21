@@ -1,0 +1,54 @@
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="calendar-day-outside">
+  <div class="calendar_days">
+
+    <div class="calendar-Data">
+      <button class="addCustomers-button" (click)="backCalendarPage(isDisabledDayParent, monthValueNumberParent, yearValueNumberParent)">Cofnij</button>
+      <button class="prev" (click)="changeDayCalenderDayPrev(); calendarStudentsDriveDay(); hoursListfunction()">&#10094;</button>
+      <div class="calendar-Data-label"><label>{{dateString}}</label></div>
+      <button class="next" (click)="changeDayCalenderDayNext(); calendarStudentsDriveDay(); hoursListfunction()">&#10095;</button>
+      <button class="addCustomers-button" (click)="getcurrentDate(); calendarStudentsDriveDay(); hoursListfunction()">Dzisiaj</button>
+    </div>
+
+    <hr class="hr" />
+
+    <ng-container *ngIf="freeDayCalendarVariable == false || dayAndHoursVariable == false">
+      <div class="close">Zamknięte</div>
+    </ng-container>
+    <ng-container *ngIf="freeDayInstructorVariable != '' && freeDayCalendarVariable != false && dayAndHoursVariable != false">
+      <div class="absence" [style]="setStyleAbsence()">Niedostępny</div>
+    </ng-container>
+
+
+    <!-- calendar -->
+
+    <div class="task_calendar_days">
+      <table class="table table-bordered mb-5">
+        <tbody>
+          <ng-container *ngFor="let calenderHours of studentsHoursCalendarList">
+            <tr>
+              <th scope="row" style="width: 100px">{{calenderHours.HourNumber}}:00</th>
+              <td>
+                <ng-container *ngFor="let driveH of calenderHours.MainHourDriveStudents">
+                  <div class="mt-2 text-center lessons">
+                    <div class="studentsInCalendar text-center d-inline-block">
+                      <label class="d-inline-block">
+                        Od: <span>{{driveH.mainHourFrom | transformHour}}</span><br>
+                        Do: <span>{{driveH.mainHourTo | transformHour}}</span><br>
+                      </label>
+
+                      <div class="d-inline-block givenTimeDiv">
+                        <label class="givenTime"><span>Podana godzina jest zajęta</span></label>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>

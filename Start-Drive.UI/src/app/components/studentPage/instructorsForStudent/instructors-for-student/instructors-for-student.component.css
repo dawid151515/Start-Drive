@@ -1,0 +1,70 @@
+.mainContainer{
+  width: 100%;
+  background-image: url("../../../../../assets/login/login.jpg");
+}
+.mainRow{
+  background-color: rgb(51, 51, 51, 0.7);
+  box-shadow: 0px 1px 5px 3px rgba(233, 233, 233, 0.2);
+  padding: 50px 56px 10px 56px;
+  margin-bottom: 50px;
+}
+.noRow{
+  background-color: rgb(51, 51, 51, 0.7);
+  box-shadow: 0px 1px 5px 3px rgba(233, 233, 233, 0.2);
+  padding: 30px 56px 30px 56px;
+}
+h1{
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.mainColText{
+  border: solid 1px #808080;
+  background-color: #E0E0E0;
+  border-radius: 5px;
+  margin: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.mainCol{
+  border-radius: 10px;
+  padding: 5px 7px;
+  border: solid 2px #808080;
+}
+.mainCol:hover {
+  cursor: pointer;
+  background-color: #E0E0E0;
+}
+.mainCol:hover .mainColText{
+  background-color: #A0A0A0;
+}
+span{
+  font-style: italic;
+}
+.noInstructors{
+  border: solid 3px #808080;
+  border-radius: 10px;
+  background-color: #E0E0E0;
+  padding: 15px 0;
+  letter-spacing: 0.5px;
+}
+h4{
+  font-size: 20px;
+  margin-top: 10px;
+}
+.imgVisible{
+  width: 280px;
+  height: 230px;
+}
+.imgVisibleMain{
+  width: 280px;
+  height: 230px;
+}
+.mainColClick{
+  background-color: rgb(255, 255, 255, 0.8);
+  border: solid 2px #808080;
+  border-radius: 10px;
+}
+.mainColClick img:hover{
+  cursor: pointer;
+}

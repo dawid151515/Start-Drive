@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Dodaj informację</h2>
+  <form #myform="ngForm" name="myForm" id="myForm">
+    <div class="addInformation">
+
+      <div class="infoFor">
+        <label>Informacja dla: </label>
+        <select name="informationFor" id="informationFor" [(ngModel)]="forWhomInfo" required>
+          <option value="students">Studentów</option>
+          <option value="instructors">Instruktorów</option>
+          <option value="general">Wszystkich</option>
+        </select>
+      </div>
+      <div class="informationContent">
+        <label>Treść informacji:</label><br>
+        <textarea name="informationText" id="informationText" [(ngModel)]="information" required></textarea>
+      </div>
+
+      <div class="addButton">
+        <button [disabled]="!myform.valid" (click)="addInformationRoute()">Dodaj</button>
+      </div>
+    </div>
+  </form>
+</div>

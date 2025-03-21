@@ -1,0 +1,17 @@
+<div class="removeCourseRoundMain">
+  <h2>Usuń turę kursu</h2>
+  <div class="removeCourseRound mb-5 mt-4">
+    <label class="mb-4">
+      Czy na pewno chcesz usunąć wybraną turę kursu?<br>
+      ({{selectedCourseRound.name}})
+    </label><br>
+    <div class="row">
+      <div class="buttonYes col-6">
+        <button (click)="removeCourseRoundRoute()">Tak</button>
+      </div>
+      <div class="buttonNo col-6">
+        <button mat-dialog-close>Nie</button>
+      </div>
+    </div>
+  </div>
+</div>

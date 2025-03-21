@@ -1,0 +1,50 @@
+.showInformationMain{
+  text-align: center;
+  width: 600px;
+}
+.showInformation{
+  padding: 0 50px;
+  align-items: center;
+  width: 100%;
+}
+h2{
+  background-color: #FFE5CC;
+  padding: 20px;
+}
+hr{
+  margin: 5px 50px;
+}
+.informationContent{
+  margin: 0 30px;
+  background-color: #FFE5CC;
+  min-height: 100px;
+  max-height: 350px;
+  overflow: auto;
+  padding: 10px;
+
+  border-radius: 3px;
+  box-shadow: 3px 3px 5px 1px #888888;
+  border: 1px solid #606060;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+label{
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+.row{
+  width: 100%;
+}
+.row button{
+  padding: 10px 20px;
+  background-color: #808080;
+  border-radius: 10px;
+  color: #fff;
+  letter-spacing: 0.5px;
+  font-size: 15px;
+  border: 2px solid #606060;
+}
+.row button:hover{
+  background-color: #A0A0A0;
+}

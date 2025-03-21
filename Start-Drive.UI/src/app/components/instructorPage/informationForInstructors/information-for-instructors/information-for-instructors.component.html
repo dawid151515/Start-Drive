@@ -1,0 +1,55 @@
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="mainContainer">
+
+  <app-instructor-menu [pageNameParent]="pageName"></app-instructor-menu>
+
+  <h1 class="mt-2">Informacje</h1>
+  <div class="row mx-auto mainRow">
+
+    <div class="col-6">
+      <div class="informationInstructors">
+        <h3>Informacje dla instruktorów</h3>
+
+        <ng-container *ngIf="informationForInstructors.length>0; then isInstructors; else noInstructors"></ng-container>
+
+        <ng-template #isInstructors>
+          <ng-container *ngFor="let instructorsInfo of informationForInstructors">
+            <div class="instructorsInfo" (click)="showInformationDialog(instructorsInfo)">
+              <label>{{instructorsInfo.info | transformLengthDisplayedText: 83}}</label>
+            </div>
+          </ng-container>
+        </ng-template>
+
+        <ng-template #noInstructors>
+          <div class="noElements">
+            <label>Brak informacji dla instruktorów</label>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="generalInformation">
+        <h3>Informacje ogólne</h3>
+
+        <ng-container *ngIf="generalInformation.length>0; then isGeneral; else noGeneral"></ng-container>
+
+        <ng-template #isGeneral>
+          <ng-container *ngFor="let general of generalInformation">
+            <div class="general" (click)="showInformationDialog(general)">
+              <label>{{general.info | transformLengthDisplayedText: 83}}</label>
+            </div>
+          </ng-container>
+        </ng-template>
+
+        <ng-template #noGeneral>
+          <div class="noElements">
+            <label>Brak informacji dla wszystkich</label>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

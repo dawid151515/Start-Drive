@@ -1,0 +1,73 @@
+<div class="logo">
+  <nav class="navbar navbar-expand-lg">
+    <div class="logoContainer mx-auto">
+      <a class="navbar-brand mx-auto">StartDrive</a>
+    </div>
+  </nav>
+</div>
+
+<div class="mainContainer">
+  <div class="container pt-4 pb-4">
+
+    <div class="row">
+      <div class="col-6 mx-auto col6">
+        <h3 class="text-center mt-3">(Szkoła jazdy)</h3>
+        <h1 class="mb-4 text-center">Zarejestruj się</h1>
+        <form #myform="ngForm" name="myForm" id="myForm">
+          <div class="mb-2">
+            <label for="name" class="form-label">Nazwa szkoły jazdy*</label>
+            <input type="text" class="form-control" [(ngModel)]="nameForm" name="name" id="name" placeholder="Nazwa szkoły jazdy" required>
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Adres szkoły jazdy*</label>
+            <input type="text" class="form-control" [(ngModel)]="addressForm" name="address" id="address" placeholder="Adres szkoły jazdy" required>
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">Miasto w którym znajduje się szkoła jazdy*</label>
+            <input type="text" class="form-control" [(ngModel)]="cityForm" name="city" id="city" placeholder="Miasto" required>
+          </div>
+          <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Nr. Telefonu*</label>
+            <input type="tel" class="form-control" [(ngModel)]="phoneNumberForm" name="phoneNumber" id="phoneNumber" placeholder="Nr. Telefonu" pattern="[0-9]{9}" required>
+          </div>
+          <div class="mb-3">
+            <label for="accountNumber" class="form-label">Numer konta bankowego szkoły jazdy</label>
+            <input type="text" class="form-control" [(ngModel)]="accountNumberForm" name="accountNumber" id="accountNumber" placeholder="Nr. Konta">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Opis</label>
+            <input type="text" class="form-control" [(ngModel)]="descriptionForm" name="description" id="description" placeholder="Opis">
+          </div><br><br>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email*</label>
+            <input type="email" class="form-control" [(ngModel)]="emailForm" name="email" id="email" placeholder="Email" email required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Hasło*</label>
+            <input [(ngModel)]="passwordValue" (keyup)="checkedPassword()" type="password" class="form-control" name="password" id="password" placeholder="Hasło" required>
+
+            <ng-container *ngIf="passwordValue.length<6; then shortPassword"></ng-container>
+            <ng-template #shortPassword>
+              <small>Hasło musi zawierać min. 6 znaków</small>
+            </ng-template>
+          </div>
+          <div class="mb-3">
+            <label for="repeatPassword" class="form-label">Powtorz hasło*</label>
+            <input [(ngModel)]="repeatPasswordValue" (keyup)="checkedPassword()" type="password" class="form-control" name="repeatPassword" id="repeatPassword" placeholder="Powtorz hasło" required>
+
+            <ng-container *ngIf="passwordValue != repeatPasswordValue; then passwordIncorrect"></ng-container>
+            <ng-template #passwordIncorrect>
+              <small>Hasła nie są takie same</small>
+            </ng-template>
+          </div>
+
+          <div class="d-grid gap-3 mb-5">
+            <button type="submit" class="btn btn-danger mt-5" [disabled]="isDisable || !myform.valid" (click)="registerHttp()">Zarejestruj się</button>
+            <a class="btn btn-secondary" href="startDrive/logowanie">Zaloguj się</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="mainContainer">
+
+  <app-student-menu [pageNameParent]="pageName"></app-student-menu>
+
+  <h1>Informacje o szkole jazdy</h1>
+
+  <div class="mainRow">
+    <ng-container *ngIf="drivingSchoolInfo.aboutText != ''; then isText; else noText"></ng-container>
+
+    <ng-template #isText>
+      <div class="row schooltext">
+        <div class="drivingSchoolText col-12" [innerHTML]="stringToHtml(drivingSchoolInfo.aboutText)">
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #noText>
+      <div class="row schooltext">
+        <div class="drivingSchoolText col-12">
+          Brak informacji o szkole jazdy!
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

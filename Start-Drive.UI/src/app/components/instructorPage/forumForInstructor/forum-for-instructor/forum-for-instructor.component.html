@@ -1,0 +1,108 @@
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="mainContainer">
+
+  <app-instructor-menu [pageNameParent]="pageName"></app-instructor-menu>
+
+  <h1 class="mb-2 mt-3 text-center">Forum</h1><br>
+  <div class="row mx-auto mainRow">
+
+    <div class="col-12">
+      <div class="questionContainer">
+
+        <div class="search">
+          <input type="text" placeholder="Szukaj pytania ..." (keyup)="search($event)">
+          <div class="icon"><i class="fa fa-search"></i></div>
+        </div>
+        <div class="questionButton">
+          <button (click)="askQuestionDialog()">Zadaj pytanie</button>
+        </div>
+
+        <ng-container *ngIf="questionTable.length>0; then question; else noQuestion"></ng-container>
+
+        <ng-template #question>
+          <ng-container *ngFor="let question of questionTableSearch; let i = index">
+            <div class="question">
+              <div class="personPostDate" [style]="setStylePersonPostDate(question.askedQuestion, true)">
+                <div class="col-6 personPost">
+                  {{findPerson(question.askedQuestion, question.personId)}}
+                </div>
+                <div class="col-6 postDate">
+                  {{convertLocaleDate(question.dateAdded)}}
+                  {{convertLocaleTime(question.dateAdded)}}
+
+                  <ng-container *ngIf="question.askedQuestion == 'instructor' && question.personId == logInInstructor.id">
+                    <div class="trashIcon" (click)="deleteQuestionDialog(question)"><i class="fa fa-trash"></i></div>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="contentQuestion">
+                <div class="contentQuestionButton"><button (click)="answerQuestionDialog(question, i)">Odpowiedz</button></div>
+                {{question.questionText}}
+              </div>
+            </div>
+
+            <ng-container *ngIf="question.answer.length > 0">
+              <div class="answer">
+                <div class="personPostDateAanswer" [style]="setStylePersonPostDate(question.answer[0].whoReplied, false)">
+                  <div class="col-6 personPostAnswer">
+                    {{findPerson(question.answer[0].whoReplied, question.answer[0].personId)}}
+                  </div>
+                  <div class="col-6 postDateAnswer">
+                    {{convertLocaleDate(question.answer[0].dateAdded)}}
+                    {{convertLocaleTime(question.answer[0].dateAdded)}}
+
+                    <ng-container *ngIf="question.answer[0].whoReplied == 'instructor' && question.answer[0].personId == logInInstructor.id">
+                      <div class="trashIconAnswer" (click)="deleteReplyDialog(question, question.answer[0], i)"><i class="fa fa-trash"></i></div>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="contentAnswer">
+                  {{question.answer[0].answerText}}
+                </div>
+              </div>
+              <ng-container *ngIf="question.answer.length>1">
+                <div class="showEverything" (click)="showEverythingFunction(i)" [hidden]="showEverythingHidden(i)">
+                  ... Pokaż więcej ...
+                </div>
+              </ng-container>
+            </ng-container>
+
+            <ng-container *ngFor="let answer of question.answer | slice:1; let j = index">
+              <div class="answer" [hidden]="!showEverythingHidden(i)">
+                <div class="personPostDateAanswer" [style]="setStylePersonPostDate(answer.whoReplied, false)">
+                  <div class="col-6 personPostAnswer">
+                    {{findPerson(answer.whoReplied, answer.personId)}}
+                  </div>
+                  <div class="col-6 postDateAnswer">
+                    {{convertLocaleDate(answer.dateAdded)}}
+                    {{convertLocaleTime(answer.dateAdded)}}
+
+                    <ng-container *ngIf="answer.whoReplied == 'instructor' && answer.personId == logInInstructor.id">
+                      <div class="trashIconAnswer" (click)="deleteReplyDialog(question, question.answer[j+1], i)"><i class="fa fa-trash"></i></div>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="contentAnswer">
+                  {{answer.answerText}}
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="question.answer.length > 1">
+              <div class="showEverything" (click)="showEverythingFunction(i)" [hidden]="!showEverythingHidden(i)">
+                ... Pokaż mniej ...
+              </div>
+            </ng-container>
+          </ng-container>
+        </ng-template>
+
+        <ng-template #noQuestion>
+          <div class="noQuestion">
+            <label>Brak pytań</label>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

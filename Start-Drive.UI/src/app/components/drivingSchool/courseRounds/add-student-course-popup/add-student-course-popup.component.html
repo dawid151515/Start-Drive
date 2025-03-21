@@ -1,0 +1,36 @@
+<div class="container" (click)="autocomboxDisplayTrue()">
+  <h2>Dodaj kursanta do listy</h2>
+  <form action="">
+    <div class="wrapper mt-4">
+      <label class="mb-2 mt-4" style="font-size:15px;" for="search">Wybierz kursanta:</label><br>
+        <div class="searchInput">
+
+            <input #input (keyup)="search($event)" [value]="selectedStudent | transformStudent" type="text" name="search" placeholder="Szukaj ..." autocomplete="off" [disabled]="isDisabledInput" (click)="autocomboxDisplayFalse(); search($event)">
+            <ng-container *ngIf="orSelected == true">
+              <small>Wybierz kursanta z listy</small>
+            </ng-container>
+            <div class="autocomBox" [hidden]="isDisabledPerson" (click)="autocomboxDisplayFalse()">
+              <ng-container *ngIf="arrayPersonSearch.length == 0">
+                <li>
+                  <label>Nie znaleziono kursanta</label>
+                </li>
+              </ng-container>
+
+              <ng-container *ngFor="let student of arrayPersonSearch">
+                <li #li (click)="selectStudent(student); validButton()">
+                  <img src="assets/instructors/default4.png" alt="" class="img-thumbnail imgVisible">
+                  <div class="dataDiv">
+                    <label>{{student.name}} {{student.lastName}}</label> <br>
+                    <label>{{student.email}}</label>
+                  </div>
+                </li>
+              </ng-container>
+            </div>
+            <div class="icon" (click)="removeSelectedStudent(); input.value=''"><i class="fa fa-remove"></i></div>
+        </div><br>
+      <div class="buttonDiv">
+        <button (click)="validButton(); addStudentToCourseRoundRoute()">Zapisz</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,59 @@
+.container{
+  text-align: center;
+  width: 600px;
+  padding: 0;
+}
+h2{
+  background-color: #FFB266;
+  padding: 20px;
+}
+.infoFor label{
+  margin-top: 20px;
+  font-size: 15px;
+}
+.infoFor select{
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+  box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+}
+.infoFor select:hover{
+  cursor: pointer;
+}
+.informationContent label{
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+.informationContent textarea{
+  width: 80%;
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+  min-height: 125px;
+  max-height: 355px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+  padding: 10px;
+}
+.addButton{
+  margin-bottom: 30px;
+}
+.addButton button{
+  padding: 10px 20px;
+  background-color: #808080;
+  border-radius: 10px;
+  color: #fff;
+  letter-spacing: 0.5px;
+  font-size: 15px;
+  border: 2px solid #606060;
+}
+.addButton button:hover{
+  background-color: #A0A0A0;
+}
+.addButton button:disabled{
+  background-color: #A0A0A0;
+}
+select:invalid, textarea:invalid{
+  border: 3px solid #CC0000;
+}

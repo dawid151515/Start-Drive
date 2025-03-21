@@ -1,0 +1,79 @@
+<div class="mainContainer">
+
+  <app-instructor-menu [pageNameParent]="pageName"></app-instructor-menu>
+
+  <h1 class="mb-0 mt-4 pt-4 text-center h1Main">Strona główna</h1><br>
+  <div class="middleContainer">
+    <div class="container pt-2">
+
+      <div class="row pt-5">
+
+        <div class="col-6">
+          <div class="divCol1">
+            <div class="row">
+
+              <div class="col-12">
+                <a href="startDrive/instruktor/stronaGlowna/turyKursow/{{schoolId}}/{{instructorId}}" class="btn btn-secondary courses">
+                  <h2>Kursy / Tury kursów</h2>
+                </a>
+              </div>
+
+              <div class="col-4">
+                <a href="startDrive/instruktor/stronaGlowna/kursanci/{{schoolId}}/{{instructorId}}" class="btn btn-secondary">
+                  <h2>Kursanci</h2>
+                </a>
+              </div>
+              <div class="col-4">
+                <a href="startDrive/instruktor/stronaGlowna/kalendarz/{{schoolId}}/{{instructorId}}" class="btn btn-secondary">
+                  <h2>Kalendarz główny</h2>
+                </a>
+              </div>
+              <div class="col-4">
+                <a href="startDrive/instruktor/stronaGlowna/forum/{{schoolId}}/{{instructorId}}" class="btn btn-secondary">
+                  <h2>Forum</h2>
+                </a>
+              </div>
+
+              <div class="col-12">
+                <a href="startDrive/instruktor/stronaGlowna/informacje/{{schoolId}}/{{instructorId}}" class="btn btn-secondary courses">
+                  <h2>Informacje dla instruktorów</h2>
+                </a>
+              </div>
+
+              <div class="col-6">
+                <a href="startDrive/instruktor/stronaGlowna/pokazUsun/{{schoolId}}/{{instructorId}}" class="btn btn-secondary">
+                  <h2>Pokaż/Usuń dane</h2>
+                </a>
+              </div>
+
+              <div class="col-6">
+                <a href="startDrive/instruktor/stronaGlowna/oSzkoleJazdy/{{schoolId}}/{{instructorId}}" class="btn btn-secondary">
+                  <h2>Informacje o szkole jazdy</h2>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+
+          <div class="calendarForToday">
+
+            <ng-container *ngIf="initVariable == true; then initCalendar;"></ng-container>
+
+            <ng-template #initCalendar>
+
+              <app-calendar-home-page-for-instructor [dayParent]="day" [monthValueNumberParent]="month"
+                [yearValueNumberParent]="year" [logInInstructor]="logInInstructor" [arrayPersons]="arrayPersons"
+                [calendarStudentsDriveAll]="calendarStudentsDriveAll" [freeDaysCalendar]="freeDaysCalendar"
+                [freeDaysInstructor]="freeDaysInstructor"
+                [daysAndHours]="daysAndHours"></app-calendar-home-page-for-instructor>
+            </ng-template>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

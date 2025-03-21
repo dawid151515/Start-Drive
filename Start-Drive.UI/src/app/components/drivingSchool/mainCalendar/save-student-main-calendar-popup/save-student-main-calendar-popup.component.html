@@ -1,0 +1,108 @@
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- enroll a student -->
+<div class="signUpStudentHour" (click)="autocomboxDisplayTrue();">
+  <h2>Zapisz kursanta/Dodaj wolne godziny</h2>
+  <form action="">
+
+    <div class="wrapper">
+      <fieldset>
+        <div class="mb-1 mt-1">
+          <div class="radio1 d-inline-block mb-2">
+            <input type="radio" name="registerStudentSetDayOff" id="registerStudent" value="Zapisz kursanta" (change)="radioInputValue($event); validButton()" checked>
+            <label class="registerStudentSetDayOffLabel" for="registerStudent">Zapisz kursanta</label>
+          </div>
+
+          <div class="radio2 d-inline-block">
+            <input type="radio" name="registerStudentSetDayOff" id="setDayOff" value="Wolne godziny" (change)="radioInputValue($event); validButton()">
+            <label class="registerStudentSetDayOffLabel1" for="setDayOff">Ustaw wolne godziny</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- search for a student -->
+      <label class="mb-2" style="font-size:15px;" for="search" [hidden]="!dayOffLayout">Wybierz kursanta:</label><br>
+      <div class="searchInput">
+
+        <ng-container *ngIf="dayOffLayout == true">
+
+          <input #input (keyup)="search($event)" [value]="selectedStudent | transformStudent" type="text" name="search" placeholder="Szukaj ..." autocomplete="off" [disabled]="isDisabledInput" (click)="autocomboxDisplayFalse(); search($event)">
+          <ng-container *ngIf="orSelected == true">
+            <small>Wybierz kursanta z listy</small>
+          </ng-container>
+          <div class="autocomBox" [hidden]="isDisabledPerson" (click)="autocomboxDisplayFalse()">
+            <ng-container *ngIf="arrayPersonSearch.length == 0">
+              <li>
+                <label>Nie znaleziono kursanta</label>
+              </li>
+            </ng-container>
+
+            <ng-container *ngFor="let student of arrayPersonSearch">
+              <li #li (click)="selectStudent(student); validButton()">
+                <img src="assets/instructors/default4.png" alt="" class="img-thumbnail imgVisible">
+                <div class="dataDiv">
+                  <label>{{student.name}} {{student.lastName}}</label> <br>
+                  <label>{{student.email}}</label>
+                </div>
+              </li>
+            </ng-container>
+          </div>
+          <div class="icon" (click)="removeSelectedStudent(); validButton()"><i class="fa fa-remove"></i></div>
+        </ng-container>
+
+        <ng-container *ngIf="dayOffLayout == false">
+          <input value="Wolne" type="text" name="search" placeholder="Wolne" [disabled]="true">
+        </ng-container>
+      </div><br>
+
+      <div class="row">
+        <div class="col-6 hourFromTo startHour">
+          <label for="startHour">Od godziny:</label><br>
+          <input type="time" [(ngModel)]="mainHourFromFormString" [ngModelOptions]="{standalone: true}" (change)="validButton()" min="{{firstHourString}}" max="{{lastHourString}}" name="startHour" id="startHour">
+          <small class="validity"></small>
+        </div>
+
+        <div class="col-6 hourFromTo endHour mb-2">
+          <label for="endHour">Do godziny:</label><br>
+          <input type="time" [(ngModel)]="mainHourToFromString" [ngModelOptions]="{standalone: true}" (change)="validButton()" min="{{firstHourString}}" max="{{lastHourString}}" name="endHour">
+          <small class="validity"></small>
+        </div>
+        <span class="hoursInfo">Wybierz godzinę pomiędzy {{firstHourString}} a {{lastHourString}}</span>
+      </div><br>
+
+      <div class="mainColorPicker">
+        <div class="colorPicker">
+          <ng-container *ngIf="dayOffLayout == true">
+            <select #select name="color" id="color" [style]="colorValue" (change)="selectColor(select.value)">
+              <option value="#FFFFFF" style="background-color:#FFFFFF;">B</option>
+              <option value="#99FFFF" style="background-color:#99FFFF;">N</option>
+              <option value="#CCFFCC" style="background-color:#CCFFCC;">Z</option>
+              <option value="#FFFFCC" style="background-color:#FFFFCC;">Ż</option>
+              <option value="#808080" style="background-color:#808080;">SZ</option>
+              <option value="#E5CCFF" style="background-color:#E5CCFF;">F</option>
+              <option value="#FFCCCC" style="background-color:#FFCCCC;">P</option>
+              <option value="#CCCCFF" style="background-color:#CCCCFF;">G</option>
+              <option value="#FFE5CC" style="background-color:#FFE5CC;">CŻ</option>
+            </select>
+          </ng-container>
+
+          <ng-container *ngIf="dayOffLayout == false">
+            <select #select name="color" id="color" [style]="'background-color: #00FF00'">
+              <option value="#00FF00" style="background-color:#00FF00;">Z</option>
+            </select>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="description">
+        <label for="desc">Opis:</label><br>
+        <textarea name="desc" [(ngModel)]="descriptionFrom" [ngModelOptions]="{standalone: true}" id="desc"></textarea>
+      </div>
+
+      <div class="buttonDiv">
+        <button class="mt-4"  [disabled]="validButtonBoolean" (click)="addStudentsHourDriveRoute()">Zapisz</button>
+      </div>
+    </div>
+  </form>
+</div>

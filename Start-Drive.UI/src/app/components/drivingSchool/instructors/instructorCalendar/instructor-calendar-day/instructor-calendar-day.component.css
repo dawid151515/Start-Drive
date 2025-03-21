@@ -1,0 +1,174 @@
+/*CALENDAR DAYS*/
+
+.calendar_days{
+  background-color: #FFFFFF;
+}
+.calendar_days .calendar-Data{
+  padding: 25px 0px;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+.calendar_days .calendar-Data .calendar-Data-label{
+  display: inline-block;
+  border: 2px solid #808080;
+  border-radius: 7px;
+  padding: 5px 30px;
+  margin: 7px 0;
+}
+.calendar_days .calendar-Data label{
+  color: #404040;
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+.calendar_days .addCustomers-button{
+  padding: 7px 50px;
+  background-color: #C0C0C0;
+  border-radius: 7px;
+  font-size: 14px;
+  border: 2px solid #404040;
+  letter-spacing: 0.5px;
+}
+.calendar_days .addCustomers-button:hover{
+  cursor: pointer;
+  background-color: #E0E0E0;
+}
+.calendar_days .calendar-Data button{
+  background-color: #E0E0E0;
+  border-radius: 4px;
+  border: 1px solid black;
+  font-size: 15px;
+  padding: 2px 10px 2px 10px;
+  margin: 0 2%;
+}
+.calendar_days .calendar-Data button:hover{
+  cursor: pointer;
+  background-color: #C0C0C0;
+}
+.close{
+  width: 100%;
+  background-color: #E0E0E0;
+  padding: 21px 0px;
+  margin-bottom: 17px;
+  font-size: 18px;
+}
+.close{
+  width: 100%;
+  background-color: #E0E0E0;
+  padding: 21px 0px;
+  margin-bottom: 17px;
+  font-size: 18px;
+}
+.absence{
+  width: 100%;
+  padding: 21px 20px;
+  margin-bottom: 17px;
+  font-size: 18px;
+  max-height: 125px;
+  overflow-y: auto;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+img{
+  position: relative;
+  top: 10px;
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  margin-left: 5px;
+  vertical-align: top ;
+}
+.studentsInCalendar label{
+  margin-left: 5px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  background-color: #E0E0E0;
+  padding: 5px;
+  border-radius: 5px;
+}
+.studentsInCalendar .fromTo{
+  position: relative;
+  top: 10px;
+  vertical-align: top ;
+}
+span{
+  font-weight: bold;
+}
+.studentsInCalendar{
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+}
+.studentsInCalendar .drivingData{
+  padding-top: 10px;
+  white-space: nowrap;
+  width: 200px;
+  overflow-x: auto;
+}
+.hourInfo{
+  position: absolute;
+  display: block;
+  top: 0px;
+}
+.hourInfo .hourInfoText{
+  visibility: hidden;
+  min-width: 200px;
+  background-color: #606060;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight:400;
+  letter-spacing: 0.5px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+
+  bottom: 100%;
+  left: 50%;
+  /* Use half of the width (120/2 = 60), to center the tooltip */
+  margin-left: -40px;
+}
+
+/* down arrow */
+.hourInfo .hourInfoText::after{
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #606060 transparent transparent transparent;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.studentsInCalendar:hover .hourInfo .hourInfoText, label:hover .hourInfo .hourInfoText{
+  visibility: visible;
+}
+.icon{
+  display: inline-block;
+  padding: 5px;
+  padding-bottom: 15px;
+  margin-left: 5px;
+  height: 100%;
+  cursor: pointer;
+
+  position: relative;
+  top: 20px;
+  vertical-align: top ;
+}
+.lessons{
+  margin-right: 10px;
+}
+.lessonsOutsideOfHours{
+  padding-bottom: 20px;
+}
+.lessonsOutsideOfHours .studentsInCalendar img{
+  margin-top: -10px;
+}
+.lessonsOutsideOfHours .studentsInCalendar .icon{
+  margin-top: -14px;
+}

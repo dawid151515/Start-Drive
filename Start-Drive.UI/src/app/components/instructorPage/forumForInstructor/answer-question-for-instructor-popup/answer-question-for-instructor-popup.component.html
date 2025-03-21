@@ -1,0 +1,12 @@
+<div class="answerQuestionMain">
+  <h2>Odpowiedz na pytanie</h2>
+  <form #myform="ngForm" name="myForm" id="myForm">
+    <div class="answerQuestion mb-5 mt-4">
+      <label>( {{selectedQuestion.questionText}} )</label>
+      <textarea [(ngModel)]="answerTextForm" name="answer" id="answer" placeholder="Odpowiedz:" required></textarea>
+      <div class="sendButton">
+        <button [disabled]="!myform.valid" (click)="answerQuestionRoute()">Wyslij</button>
+      </div>
+    </div>
+  </form>
+</div>

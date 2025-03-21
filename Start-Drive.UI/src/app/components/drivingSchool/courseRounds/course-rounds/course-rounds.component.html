@@ -1,0 +1,171 @@
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="mainContainer pb-5">
+
+  <app-driving-school-menu [pageNameParent]="pageName"></app-driving-school-menu>
+
+  <div class="containerDiv">
+    <h1>Tury kursów</h1>
+
+    <div class="addRoundsCourses mb-4">
+      <button (click)="addCourseRoundDialog()">Dodaj turę kursów</button>
+    </div>
+
+    <div class="mainCurrentRoundsCourses pt-1 pb-1">
+      <div class="currentRoundsCourses">
+        <h3>Obecne tury kursów</h3>
+        <hr>
+
+        <ng-container *ngIf="currentRoundsCoursesTable.length; then currentCourseRounds; else noCurrentCourseRounds"></ng-container>
+
+        <ng-template #currentCourseRounds>
+          <ng-container *ngFor="let currentCourse of currentRoundsCoursesTable">
+            <div class="roundsCourses">
+              <div class="roundCoursesInfo">
+                <div class="roundsCoursesIcon">
+                  <i class="fa fa-edit" (click)="editCourseRoundDialog(currentCourse)"></i>
+                  <i class="fa fa-remove" (click)="removeCourseRoundDialog(currentCourse)"></i>
+                </div>
+
+                <label class="roundsName">{{currentCourse.name}}</label><br>
+                <label class="roundsTime">Czas trwania: {{toLocaleDateStringFunction(currentCourse.from)}} - {{toLocaleDateStringFunction(currentCourse.to)}}</label>
+              </div>
+              <hr>
+              <div class="roundCoursesStudents">
+                <div class="numberMembers">
+                  Ilość osób: {{currentCourse.studentsThisRoundCourse.length}}
+                  <i class="fa fa-plus-square" (click)="addStudentCourseRoundDialog(currentCourse)"></i>
+                </div>
+
+                <ng-container *ngFor="let currentStudentsCourse of currentCourse.studentsThisRoundCourse; let i=index">
+                  {{getStudent(currentStudentsCourse.courseRoundStudentId)}}
+                  <div class="mt-2 text-center addedStudents">
+                    <div class="studentsInCalendar text-center d-inline-block">
+                      <img src="assets/instructors/default4.png" alt="" class="img-thumbnail d-inline-block" (click)="showDrivingLessonsHoursStudentDialog(currentStudentsCourse)">
+                      <label class="d-inline-block" (click)="showDrivingLessonsHoursStudentDialog(currentStudentsCourse)">
+                        <span>{{findStudent.name}} {{findStudent.lastName}}</span><br>
+                        E-mail: <span>{{findStudent.email}}</span>, Tel.: <span>{{findStudent.phoneNumber}}</span>
+                      </label>
+                      <div class="icon" (click)="removeStudentCourseDialog(currentStudentsCourse, currentCourse)"><i class="fa fa-remove"></i></div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </ng-template>
+
+        <ng-template #noCurrentCourseRounds>
+          <div class="noCurrentCourseRounds">
+            <label>Brak obecnych tur kursów</label>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="mainFutureRoundsCourses pt-1 pb-1">
+      <div class="futureRoundsCourses">
+        <h3>Przyszłe tury kursów</h3>
+        <hr>
+
+        <ng-container *ngIf="futureRoundsCoursesTable.length; then futureRoundsCourses; else noFutureRoundsCourses"></ng-container>
+
+        <ng-template #futureRoundsCourses>
+          <ng-container *ngFor="let futureCourse of futureRoundsCoursesTable">
+            <div class="roundsCourses">
+              <div class="roundCoursesInfo">
+                <div class="roundsCoursesIcon">
+                  <i class="fa fa-edit" (click)="editCourseRoundDialog(futureCourse)"></i>
+                  <i class="fa fa-remove" (click)="removeCourseRoundDialog(futureCourse)"></i>
+                </div>
+
+                <label class="roundsName">{{futureCourse.name}}</label><br>
+                <label class="roundsTime">Czas trwania: {{toLocaleDateStringFunction(futureCourse.from)}} - {{toLocaleDateStringFunction(futureCourse.to)}}</label>
+              </div>
+              <hr>
+              <div class="roundCoursesStudents">
+                <div class="numberMembers">
+                  Ilość osób: {{futureCourse.studentsThisRoundCourse.length}}
+                  <i class="fa fa-plus-square" (click)="addStudentCourseRoundDialog(futureCourse)"></i>
+                </div>
+
+                <ng-container *ngFor="let futureStudentsCourse of futureCourse.studentsThisRoundCourse; let i=index">
+                  {{getStudent(futureStudentsCourse.courseRoundStudentId)}}
+                  <div class="mt-2 text-center addedStudents">
+                    <div class="studentsInCalendar text-center d-inline-block">
+                      <img src="assets/instructors/default4.png" alt="" class="img-thumbnail d-inline-block" (click)="showDrivingLessonsHoursStudentDialog(futureStudentsCourse)">
+                      <label class="d-inline-block" (click)="showDrivingLessonsHoursStudentDialog(futureStudentsCourse)">
+                        <span>{{findStudent.name}} {{findStudent.lastName}}</span><br>
+                        E-mail: <span>{{findStudent.email}}</span>, Tel.: <span>{{findStudent.phoneNumber}}</span>
+                      </label>
+                      <div class="icon" (click)="removeStudentCourseDialog(futureStudentsCourse, futureCourse)"><i class="fa fa-remove"></i></div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </ng-template>
+
+        <ng-template #noFutureRoundsCourses>
+          <div class="noFutureRoundsCourses">
+            <label>Brak przyszłych tur kursów</label>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="mainPastRoundsCourses pt-1 pb-1">
+      <div class="pastRoundsCourses">
+        <h3>Przeszłe tury kursów</h3>
+        <hr>
+
+        <ng-container *ngIf="pastRoundsCoursesTable.length; then pastRoundsCourses; else noPastRoundsCourses"></ng-container>
+
+        <ng-template #pastRoundsCourses>
+          <ng-container *ngFor="let pastCourse of pastRoundsCoursesTable">
+            <div class="roundsCourses">
+              <div class="roundCoursesInfo">
+                <div class="roundsCoursesIcon">
+                  <i class="fa fa-edit" (click)="editCourseRoundDialog(pastCourse)"></i>
+                  <i class="fa fa-remove" (click)="removeCourseRoundDialog(pastCourse)"></i>
+                </div>
+
+                <label class="roundsName">{{pastCourse.name}}</label><br>
+                <label class="roundsTime">Czas trwania: {{toLocaleDateStringFunction(pastCourse.from)}} - {{toLocaleDateStringFunction(pastCourse.to)}}</label>
+              </div>
+              <hr>
+              <div class="roundCoursesStudents">
+                <div class="numberMembers">
+                  Ilość osób: {{pastCourse.studentsThisRoundCourse.length}}
+                  <i class="fa fa-plus-square" (click)="addStudentCourseRoundDialog(pastCourse)"></i>
+                </div>
+
+                <ng-container *ngFor="let pastStudentsCourse of pastCourse.studentsThisRoundCourse; let i=index">
+                  {{getStudent(pastStudentsCourse.courseRoundStudentId)}}
+                  <div class="mt-2 text-center addedStudents">
+                    <div class="studentsInCalendar text-center d-inline-block">
+                      <img src="assets/instructors/default4.png" alt="" class="img-thumbnail d-inline-block" (click)="showDrivingLessonsHoursStudentDialog(pastStudentsCourse)">
+                      <label class="d-inline-block" (click)="showDrivingLessonsHoursStudentDialog(pastStudentsCourse)">
+                        <span>{{findStudent.name}} {{findStudent.lastName}}</span><br>
+                        E-mail: <span>{{findStudent.email}}</span>, Tel.: <span>{{findStudent.phoneNumber}}</span>
+                      </label>
+                      <div class="icon" (click)="removeStudentCourseDialog(pastStudentsCourse, pastCourse)"><i class="fa fa-remove"></i></div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </ng-template>
+
+        <ng-template #noPastRoundsCourses>
+          <div class="noPastRoundsCourses">
+            <label>Brak przeszłych tur kursów</label>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,157 @@
+<div class="mainContainer">
+
+  <app-driving-school-menu [pageNameParent]="pageName"></app-driving-school-menu>
+
+  <h1 class="mb-4 mt-2 text-center">Kursanci</h1><br>
+
+  <div class="row text-center m-0">
+
+    <div class="addStudentButton" (click)="addStudentDialog()"><button>Dodaj kursanta</button></div>
+
+    <ng-container *ngIf="arrayPersons.length>0; then areStudents; else noStudents"></ng-container>
+
+    <ng-template #areStudents>
+      <div class="row mx-auto mainRow">
+        <ng-container *ngFor="let student of arrayPersons; let i=index">
+
+          <ng-container *ngIf="i == index">
+
+            <div class="col-12">
+              <div class="mainColClick mt-1 mb-5">
+                <img src="assets/instructors/default4.png" alt="" class="img-thumbnail imgVisible mt-5"
+                  (click)="showStudents(i)"><br>
+                <label class="fs-4 mb-4">{{student.name}} {{student.lastName}}</label>
+
+                <div class="drivingLesonsAll">
+                  {{drivingLessonsForAStudent(student)}}
+
+                  <div class="h4Div">
+                    <br>
+                    <h4>Wszystkie lekcje jazdy kursanta</h4>
+                    <hr>
+                  </div>
+                  <ng-container *ngIf="lessonsForSelectStudent.length != 0">
+                    <ng-container *ngFor="let lessons of lessonsForSelectStudent">
+                      {{getInstructorById(lessons.instructorId)}}
+                      <div class="drivingLesson">
+                        <div class="lessonData">
+                          {{convertLocaleDate(lessons.dateAddedDrive)}}
+                        </div>
+                        <div class="drivingHour">
+                          <div class="drivingHourFrom">
+                            {{lessons.mainHourFrom | transformHour}}
+                          </div>
+                          <div class="drivingHourTo">
+                            {{lessons.mainHourTo | transformHour}}
+                          </div>
+                        </div>
+                        <div class="instructorDetails">
+                          {{selectedInstructor.name}} {{selectedInstructor.lastName}}<br>
+                          {{selectedInstructor.email}}
+                        </div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngIf="lessonsForSelectStudent.length == 0">
+                    <label>Brak lekcji jazdy</label>
+                  </ng-container>
+                </div>
+
+                <div class="totalLessonHoursMain">
+                  <div class="totalLessonHours">
+                    Suma godzin jazd to: <br>
+                    <span class="lessonHoursSpan">{{totalDrivingLessonsHours}} h</span>
+                  </div>
+                </div>
+
+                <div class="mainColTextHidden mt-5">
+
+                  <table class="table table-striped mb-5">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" colspan="2">Dane kursanta</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td><span>Imie:</span></td>
+                        <td>{{student.name}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td><span>Nazwisko:</span></td>
+                        <td>{{student.lastName}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td><span>Tel.:</span></td>
+                        <td>{{student.phoneNumber}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td><span>E-mail:</span></td>
+                        <td>{{student.email}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td><span>Data urodzenia:</span></td>
+                        <td>{{student.dateOfBirth | date:"dd.MM.y"}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">6</th>
+                        <td><span>Miejsce urodzenia:</span></td>
+                        <td>{{student.placeOfBirth}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">7</th>
+                        <td><span>Adres:</span></td>
+                        <td>{{student.address}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+
+                <div class="editDeleteStudentButtons">
+                  <ng-container *ngIf="student.password == ''">
+                    <button (click)="generateRegistrationCodeDialog(student)">Generuj kod do rejestracji</button>
+                  </ng-container>
+                  <ng-container *ngIf="student.password != ''">
+                    <button class="reset" (click)="generateRegistrationCodeDialog(student)">Resetuj hasło</button>
+                  </ng-container>
+                  <button (click)="editStudentDialog(student)">Edytuj dane</button>
+                  <button (click)="removeStudentDialog(student)">Usuń kursanta</button>
+                </div>
+
+              </div>
+            </div>
+          </ng-container>
+
+          <div class="col-3 mb-5" *ngIf="i != index">
+            <div class="mainCol" (click)="showStudents(i)">
+              <img src="assets/instructors/default4.png" alt="" class="img-thumbnail mt-2 imgVisibleMain">
+
+              <div class="mainColText">
+                <label class="fs-4">{{student.name}} {{student.lastName}},</label><br>
+                <label><span>Tel.:</span> {{student.phoneNumber}},</label><br>
+                <label><span>E-mail:</span> {{student.email}}</label>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-template>
+
+    <ng-template #noStudents>
+      <div class="row mx-auto noRow">
+        <div class="col-12 noStudents">
+          <h4>Brak kursantów</h4>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

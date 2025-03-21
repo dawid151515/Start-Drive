@@ -1,0 +1,149 @@
+.mainContainer{
+  width: 100%;
+  background-image: url("../../../../../assets/login/login.jpg");
+}
+.mainRow{
+  background-color: rgb(51, 51, 51, 0.7);
+  box-shadow: 0px 1px 5px 3px rgba(233, 233, 233, 0.2);
+  padding: 50px 56px 10px 56px;
+  margin-bottom: 50px;
+}
+.noRow{
+  background-color: rgb(51, 51, 51, 0.7);
+  box-shadow: 0px 1px 5px 3px rgba(233, 233, 233, 0.2);
+  padding: 0px 56px 30px 56px;
+}
+h1{
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+
+.mainColText{
+  border: solid 1px #808080;
+  background-color: #E0E0E0;
+  border-radius: 5px;
+  margin: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.mainCol{
+  border-radius: 10px;
+  padding: 5px 7px;
+  border: solid 2px #808080;
+}
+.mainCol:hover {
+  cursor: pointer;
+  background-color: #E0E0E0;
+}
+.mainCol:hover .mainColText{
+  background-color: #A0A0A0;
+}
+span{
+  font-style: italic;
+}
+.noStudents{
+  border: solid 3px #808080;
+  border-radius: 10px;
+  background-color: #E0E0E0;
+  padding: 15px 0;
+  margin-top: 70px;
+  letter-spacing: 0.5px;
+}
+.noStudents h4{
+  margin-top: 10px;
+  font-size: 20px;
+}
+.imgVisible{
+  width: 280px;
+  height: 230px;
+}
+.imgVisibleMain{
+  width: 280px;
+  height: 230px;
+}
+.mainColClick{
+  border: solid 2px #808080;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255, 0.8);
+}
+.mainColClick img:hover{
+  cursor: pointer;
+}
+
+/* -------------------------------------------------- Driving Lessons -------------------------- */
+
+
+.drivingLesonsAll{
+  border: 2px solid #606060;
+  margin: 10px;
+  border-radius: 5px;
+  padding: 0px 15px 15px 15px;
+  max-height: 560px;
+  overflow-y: auto;
+  background-color: #FFFFFF;
+}
+.drivingLesonsAll .h4Div{
+  position: sticky;
+  top: 0;
+  background-color: #FFF;
+}
+.drivingLesson{
+  border: 1px solid #404040;
+  border-radius: 3px;
+  width: 32%;
+  display: inline-block;
+  text-align: left;
+  height: 101px;
+  background-color: #F5F5F5;
+  vertical-align: top;
+  margin: 5px 2px;
+  min-width: 190px;
+}
+.lessonData{
+  background-color: #99FF99;
+  width: 100%;
+  text-align: center;
+}
+.drivingHour{
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  background-color: #FFF;
+}
+.drivingHour label{
+  margin: 5px 0px;
+}
+.drivingHourFrom{
+  display: inline-block;
+  padding: 8px 0px;
+  background-color: #E5FFCC;
+  width: 50%;
+}
+.drivingHourTo{
+  display: inline-block;
+  padding: 8px 0px;
+  background-color: #CCFF99;
+  width: 50%;
+}
+.totalLessonHoursMain{
+  width: 100%;
+  text-align: right;
+  padding: 10px;
+}
+.totalLessonHoursMain .totalLessonHours{
+  font-size: 14px;
+  border: 5px double #C0C0C0;
+  border-radius: 5px;
+  padding: 15px;
+  width: 190px;
+  text-align: center;
+  display: inline-block;
+  background-color: #FFFFFF;
+}
+.totalLessonHoursMain .totalLessonHours .lessonHoursSpan{
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}

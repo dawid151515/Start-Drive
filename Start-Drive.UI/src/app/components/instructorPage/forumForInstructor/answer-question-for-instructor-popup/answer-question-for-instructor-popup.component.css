@@ -1,0 +1,40 @@
+.answerQuestionMain{
+  text-align: center;
+  width: 70vw;
+  min-width: 440px;
+}
+.answerQuestion{
+  padding: 0 100px;
+}
+h2{
+  background-color: #FFCCCC;
+  padding: 20px;
+}
+label{
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  font-size: 17px;
+}
+textarea{
+  width: 100%;
+  min-height: 70px;
+  max-height: 420px;
+  letter-spacing: 0.5px;
+  font-size: 18px;
+  padding: 5px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 1);
+  margin-bottom: 20px;
+}
+button{
+  width: 150px;
+  padding: 10px 20px;
+  background-color: #808080;
+  border-radius: 10px;
+  color: #fff;
+  letter-spacing: 0.5px;
+  font-size: 17px;
+  border: 2px solid #606060;
+}
+button:hover{
+  background-color: #A0A0A0;
+}

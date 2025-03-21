@@ -1,0 +1,51 @@
+.container{
+  text-align: center;
+  padding: 0;
+  width: 600px;
+}
+.generateCode{
+  padding: 0 20px;
+}
+h2{
+  background-color: #E0E0E0;
+  width: 100%;
+  padding: 20px;
+}
+label{
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+.buttons{
+  display: inline-block;
+  width: 100%;
+}
+.generateButton{
+  padding: 10px 60px;
+  background-color: #808080;
+  border-radius: 10px;
+  color: #fff;
+  letter-spacing: 0.5px;
+  font-size: 18px;
+  border: 2px solid #606060;
+  margin-right: 20px;
+}
+.generateButton:hover{
+  background-color: #A0A0A0;
+}
+.saveButton{
+  padding: 8.5px 15px;
+  vertical-align: top;
+}
+
+span{
+  font-weight: bold;
+  cursor: text;
+}
+.generate{
+  max-width: 650px;
+  font-size: 15px;
+  overflow-x: auto;
+  padding: 20px;
+  border: 2px solid #606060;
+  cursor: text;
+}

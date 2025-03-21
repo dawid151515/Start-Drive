@@ -1,0 +1,77 @@
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="mainContainer">
+
+  <app-driving-school-menu [pageNameParent]="pageName"></app-driving-school-menu>
+
+  <h1 class="mt-2">Ustawienia</h1>
+  <div class="row mx-auto mainRow">
+
+    <div class="col-6">
+      <div class="freeDaysMain">
+        <form action="">
+          <label class="lastDays">Obecnie ustawione pojedyńcze dni wolne od pracy:</label><br>
+          <div class="freeDaysList">
+            <ng-container *ngFor="let freeDays of freeDaysCalendarMainToConvert">
+              <div class="freeDays">
+                {{freeDays.dateCloseKey}}
+                <div class="icon" (click)="deleteDaysDialog(freeDays)"><i class="fa fa-remove"></i></div>
+              </div>
+            </ng-container>
+          </div>
+
+          <label class="mt-3">Ustaw pojedyńcze dni wolne od pracy (święta, uroczystości)</label><br>
+          <input type="date" [(ngModel)]="addSingleCloseInput" [ngModelOptions]="{standalone: true}" [style]="styleSingleClose" (change)="checkDateExists()">
+          <button [disabled]="disabledSingleClose" (click)="addSingleCloseRoute()">Dodaj</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="breaks">
+        <form action="">
+          <label>Ile godzin/minut mają wynosić przerwy między kolejną lekcją jazdy u instruktorów</label><br>
+          <input #inputValue type="time" [value]="convertHourFunction(breakBetweenRidesMain)" (change)="convertToNumberHourFunction(inputValue.value)">
+          <button (click)="updateBreakBetweenRiders()">Zapisz</button>
+        </form>
+      </div>
+    </div>
+
+    <div>
+      <div class="openClose">
+        <form action="">
+          <label class="mb-4">Ustaw godziny jazd w całym tygodniu</label><br>
+
+          <ng-container *ngFor="let days of daysAndHoursMain | slice:1; let i = index">
+            <div class="openCloseHours mb-3">
+              <label class="mb-2">{{daysOfTheWeek[i+1]}}</label><br>
+              <select #selectOpenClose class="mb-1" name="openClose" id="openClose" (change)="daysAndHoursOnchange(selectOpenClose.value , i); selectOnChange(selectOpenClose.value , i, 0)">
+                <option [selected]="days.isOpen"  value="open">Otwarte</option>
+                <option [selected]="daysAndHoursIsClose(days.isOpen)" value="close">Zamknięte</option>
+              </select><br>
+              <label>Od: </label>
+              <input #firstHourInput class="mb-1" type="time" [style]="backgroundColorIsCorrect[i+1]" [disabled]="daysAndHoursOnchange(selectOpenClose.value , i)" [value]="convertHourFunction(days.firstHour)" (change)="inputFirstHourOnChange(firstHourInput.value, i, 0); isCorrectHourFunction(firstHourInput.value, lastHourInput.value, i, 0)"><br>
+              <label>Do: </label>
+              <input #lastHourInput class="mb-1" type="time" [style]="backgroundColorIsCorrect[i+1]" [disabled]="daysAndHoursOnchange(selectOpenClose.value , i)" [value]="convertHourFunction(days.lastHour)" (change)="inputLastHourOnChange(lastHourInput.value, i, 0); isCorrectHourFunction(firstHourInput.value, lastHourInput.value, i, 0)">
+            </div>
+          </ng-container>
+
+          <div class="openCloseHours">
+            <label class="mb-2">{{daysOfTheWeek[0]}}</label><br>
+            <select #selectOpenClose1 class="mb-1" name="" id="" (change)="daysAndHoursOnchange(selectOpenClose1.value , 0); selectOnChange(selectOpenClose1.value , 0, 1)">
+              <option [selected]="daysAndHoursMain[0].isOpen" value="open">Otwarte</option>
+              <option [selected]="daysAndHoursIsClose(daysAndHoursMain[0].isOpen)" value="close">Zamknięte</option>
+            </select><br>
+            <label>Od: </label>
+            <input #firstHourInput1 class="mb-1" type="time" [style]="backgroundColorIsCorrect[0]" [disabled]="daysAndHoursOnchange(selectOpenClose1.value , 0)" [value]="convertHourFunction(daysAndHoursMain[0].firstHour)" (change)="inputFirstHourOnChange(firstHourInput1.value, 0, 1); isCorrectHourFunction(firstHourInput1.value, lastHourInput1.value, 0, 1)"><br>
+            <label>Do: </label>
+            <input #lastHourInput1 class="mb-1" type="time" [style]="backgroundColorIsCorrect[0]" [disabled]="daysAndHoursOnchange(selectOpenClose1.value , 0)" [value]="convertHourFunction(daysAndHoursMain[0].lastHour)" (change)="inputLastHourOnChange(lastHourInput1.value, 0, 1); isCorrectHourFunction(firstHourInput1.value, lastHourInput1.value, 0, 1)">
+          </div><br>
+
+          <button [disabled]="isDisabledHourFunction()" (click)="updateOpenCloseRoute()">Zapisz</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

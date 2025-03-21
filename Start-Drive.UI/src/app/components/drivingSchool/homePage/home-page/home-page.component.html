@@ -1,0 +1,136 @@
+<div class="mainContainer">
+
+  <app-driving-school-menu [pageNameParent]="pageName"></app-driving-school-menu>
+
+  <h1 class="mb-0 mt-4 pt-4 text-center h1Main">Strona główna</h1><br>
+
+  <div class="middleContainer">
+    <div class="container pt-2">
+
+      <div class="row pt-5">
+
+        <div class="col-6">
+          <div class="divCol1">
+            <div class="row">
+
+              <div class="col-12">
+                <a href="startDrive/stronaGlowna/turyKursow/{{schoolId}}" class="btn btn-secondary courses"><h2>Kursy / Tury kursów</h2></a>
+              </div>
+
+              <div class="col-4">
+                <a href="startDrive/stronaGlowna/instruktorzy/{{schoolId}}" class="btn btn-secondary"><h2>Instruktorzy</h2></a>
+              </div>
+              <div class="col-4">
+                <a href="startDrive/stronaGlowna/kursanci/{{schoolId}}" class="btn btn-secondary"><h2>Kursanci</h2></a>
+              </div>
+              <div class="col-4">
+                <a href="startDrive/stronaGlowna/kalendarz/{{schoolId}}" class="btn btn-secondary"><h2>Kalendarz główny</h2></a>
+              </div>
+
+              <div class="col-12">
+                <a href="startDrive/stronaGlowna/informacje/{{schoolId}}" class="btn btn-secondary courses"><h2>Informacje dla kursantów / instruktorów</h2></a>
+              </div>
+
+              <div class="col-4">
+                <a href="startDrive/stronaGlowna/forum/{{schoolId}}" class="btn btn-secondary"><h2>Forum</h2></a>
+              </div>
+              <div class="col-4">
+                <a href="startDrive/stronaGlowna/ustawienia/{{schoolId}}" class="btn btn-secondary"><h2>Ustawienia</h2></a>
+              </div>
+              <div class="col-4">
+                <a href="startDrive/stronaGlowna/oSzkoleJazdy/{{schoolId}}" class="btn btn-secondary"><h2>Informacje o szkole jazdy</h2></a>
+              </div>
+
+              <div class="col-12">
+                <a href="startDrive/stronaGlowna/edytujUsun/{{schoolId}}" class="btn btn-secondary courses"><h2>Edytuj / Usuń szkołę jazdy</h2></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+
+          <div class="forumDiv">
+            <h1 class="mt-1 text-center">Forum <small>(ostatnio zadane 3 pytania)</small></h1>
+            <div class="row">
+
+              <div class="col-12">
+                <div class="questionContainer">
+
+                  <ng-container *ngIf="questionTable.length>0; then question; else noQuestion"></ng-container>
+
+                  <ng-template #question>
+                    <ng-container *ngFor="let question of questionTableSearch | slice:0:3; let i = index">
+                      <div class="question">
+                        <div class="personPostDate" [style]="setStylePersonPostDate(question.askedQuestion, true)">
+                          <div class="col-6 personPost">
+                            {{findPerson(question.askedQuestion, question.personId)}}
+                          </div>
+                          <div class="col-6 postDate">
+                            {{convertLocaleDate(question.dateAdded)}}
+                            {{convertLocaleTime(question.dateAdded)}}
+                          </div>
+                        </div>
+                        <div class="contentQuestion">
+                          {{question.questionText}}
+                        </div>
+                      </div>
+
+                      <ng-container *ngIf="question.answer.length > 0">
+                        <div class="answer">
+                          <div class="personPostDateAanswer" [style]="setStylePersonPostDate(question.answer[0].whoReplied, false)">
+                            <div class="col-6 personPostAnswer">
+                              {{findPerson(question.answer[0].whoReplied, question.answer[0].personId)}}
+                            </div>
+                            <div class="col-6 postDateAnswer">
+                              {{convertLocaleDate(question.answer[0].dateAdded)}}
+                              {{convertLocaleTime(question.answer[0].dateAdded)}}
+                            </div>
+                          </div>
+                          <div class="contentAnswer">
+                            {{question.answer[0].answerText}}
+                          </div>
+                        </div>
+                        <ng-container *ngIf="question.answer.length>1">
+                          <div class="showEverything" (click)="showEverythingFunction(i)" [hidden]="showEverythingHidden(i)">
+                            ... Pokaż więcej ...
+                          </div>
+                        </ng-container>
+                      </ng-container>
+
+                      <ng-container *ngFor="let answer of question.answer | slice:1; let j = index">
+                        <div class="answer" [hidden]="!showEverythingHidden(i)">
+                          <div class="personPostDateAanswer" [style]="setStylePersonPostDate(answer.whoReplied, false)">
+                            <div class="col-6 personPostAnswer">
+                              {{findPerson(answer.whoReplied, answer.personId)}}
+                            </div>
+                            <div class="col-6 postDateAnswer">
+                              {{convertLocaleDate(answer.dateAdded)}}
+                              {{convertLocaleTime(answer.dateAdded)}}
+                            </div>
+                          </div>
+                          <div class="contentAnswer">
+                            {{answer.answerText}}
+                          </div>
+                        </div>
+                      </ng-container>
+                      <div class="showEverything" (click)="showEverythingFunction(i)" [hidden]="!showEverythingHidden(i)">
+                        ... Pokaż mniej ...
+                      </div>
+                    </ng-container>
+                  </ng-template>
+
+                  <ng-template #noQuestion>
+                    <div class="noQuestion">
+                      <label>Brak pytań</label>
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

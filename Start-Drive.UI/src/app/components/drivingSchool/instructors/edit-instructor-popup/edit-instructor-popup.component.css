@@ -1,0 +1,24 @@
+.container{
+  max-height: 650px;
+  width: 600px;
+  overflow: auto;
+}
+button{
+  background-color: #CC0000;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+button:hover{
+  background-color: #990000;
+}
+a{
+  margin-left: 30px;
+  margin-right: 30px;
+}
+small{
+  font-size: 80%;
+  color: red;
+}
+input:invalid{
+  border: 3px solid #CC0000;
+}

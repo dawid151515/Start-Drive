@@ -1,9 +1,9 @@
 # Start-Drive
 
-# Application description
+## Application description
 The application was created for driving schools to facilitate communication between students, instructors and people managing the driving school. Thanks to the application, instructors can plan dates and times of driving lessons, while students can choose free dates and times of lessons with the selected instructor.
 
-# 1. Registration as a driving school
+## 1. Registration as a driving school
 
 To register as a driving school, simply click the "register" button, then click "as a driving school", and then fill in the fields required for registration.
 
@@ -49,7 +49,7 @@ In this tab, a user logged in as a driving school can add information about the 
 
 Here you can edit the driving school details, change the password and delete the driving school profile.
 
-# 2. Registering as an instructor
+## 2. Registering as an instructor
 
 The instructor receives a generated code from the person managing the driving school. Then, he clicks on the register as an instructor tab and enters the received code, the e-mail address of the driving school and his e-mail. He also sets a password for his account. In the next step, he can log in to his account.
 
@@ -87,7 +87,7 @@ In this tab, the instructor can read general information about the driving schoo
 
 By clicking on this tab, the instructor will see their data. They can also delete their account, which will remove access to the driving school data. The school has the option of denying the instructor access to the account.
 
-# 3. Registration as a student:
+## 3. Registration as a student:
 
 The student receives a generated code from the person managing the driving school. Then, he clicks on the register as a student tab and enters the received code, the driving school's e-mail address and his e-mail. He also sets a password for his account. In the next step, he can log in to his account.
 
@@ -122,13 +122,13 @@ In this tab, students can see general information about the driving school.
 In this tab, students can check their data and delete their account from the application.
 
 
-# Technologies:
+## Technologies:
 - C#, .NET, Entity framework (backend),
 - JWT (authorization)
 - Angular, TypeScript, Bootstrap, HTML, CSS (frontend)
 - SQL Server (database)
 
-# Starting:
+## Starting:
 To start the application you need to:
 - start SQL Server
 

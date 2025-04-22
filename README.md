@@ -7,7 +7,7 @@ The application was created for driving schools to facilitate communication betw
 
 To register as a driving school, simply click the "register" button, then click "as a driving school", and then fill in the fields required for registration.
 
-Driving school account description:
+**Driving school account description:**
 
 - Homepage
 
@@ -53,7 +53,7 @@ Here you can edit the driving school details, change the password and delete the
 
 The instructor receives a generated code from the person managing the driving school. Then, he clicks on the register as an instructor tab and enters the received code, the e-mail address of the driving school and his e-mail. He also sets a password for his account. In the next step, he can log in to his account.
 
-Instructor account description:
+**Instructor account description:**
 
 - Home page
 
@@ -91,7 +91,7 @@ By clicking on this tab, the instructor will see their data. They can also delet
 
 The student receives a generated code from the person managing the driving school. Then, he clicks on the register as a student tab and enters the received code, the driving school's e-mail address and his e-mail. He also sets a password for his account. In the next step, he can log in to his account.
 
-Student account description:
+**Student account description:**
 
 - Home page
 
@@ -132,17 +132,22 @@ In this tab, students can check their data and delete their account from the app
 To start the application you need to:
 - start SQL Server
 
-Starting the backend
+**Starting the backend**
 
 - open the Start-Drive.API project, e.g. in Microsoft Visual Studio, fill in the fields in the appsettings.json file, for example like this:
+
 "ConnectionStrings": {
+
     "StartDriveConnectionString": "server=EnterSQLServerNameHere;database=StartDriveDb;Trusted_Connection=true;TrustServerCertificate=True"
   },
+  
   "AuthSettings": {
+  
     "securityKey": "provideSecurityKey",
     "validAudience": "http://localhost:4200",
-    "validIssuer": "http://localhost:7149"
+    "validIssuer": "http://localhost:7149" 
   }
+  
 - then open Package Manager Console and to create a database type the following commands:
 - add-migration "initialMigration"
 - update-database
@@ -152,7 +157,7 @@ The second way to create a database is to add ready files with the created datab
 
 - then run the application by clicking the green triangle button in Visual Studio to run the application
 
-Starting the frontend
+**Starting the frontend**
 
 - open the Start-Drive.UI project, e.g. in Microsoft Visual Studio Code
 - open the terminal and go to the Start-Drive.UI folder
